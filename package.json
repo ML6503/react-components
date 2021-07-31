@@ -1,17 +1,17 @@
 {
-  "name": "my-webpack-project",
+  "name": "react-webpack-project",
   "version": "1.0.0",
-  "description": "My webpack project",
+  "description": "My react webpack project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode=production --node-env=production",
+    "build": "npm run lint && webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
     "serve": "webpack serve",
-    "lint": "eslint . --ext .tsx",
-    "fix": "npx eslint . --ext .ts --fix",
+    "lint": "npx eslint --ext .ts --ext .tsx .",
+    "fix": "npx eslint --ext .ts --ext .tsx . --fix",
     "start": "npx webpack serve --open chrome",
     "prettier-format": "prettier --config .prettierrc src/**/*.tsx --write"
   },
@@ -25,13 +25,28 @@
   ],
   "author": "ML",
   "license": "ISC",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
   "devDependencies": {
+    "@types/react": "^17.0.15",
+    "@types/react-dom": "^17.0.9",
     "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@typescript-eslint/parser": "^4.28.4",
-    "@webpack-cli/generators": "^2.2.0",
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^6.2.0",
     "eslint": "^7.31.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-webpack-plugin": "^3.0.1",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.2",
     "mini-css-extract-plugin": "^2.1.0",
     "prettier": "^2.3.2",
@@ -40,15 +55,6 @@
     "typescript": "^4.3.5",
     "webpack": "^5.46.0",
     "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2",
-    "workbox-webpack-plugin": "^6.1.5"
-  },
-  "dependencies": {
-    "@types/jest": "^26.0.24",
-    "@types/node": "^16.4.3",
-    "@types/react": "^17.0.15",
-    "@types/react-dom": "^17.0.9",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "webpack-dev-server": "^3.11.2"
   }
 }
