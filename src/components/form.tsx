@@ -12,7 +12,7 @@ const Form = () : JSX.Element => {
     gender: '',
     city: 'Aya Napa',
     gdpr: '',
-    test: '',
+    test: 'PCR',
     testResultNotice: ''
   });
 
@@ -97,9 +97,20 @@ const Form = () : JSX.Element => {
         className: 'form-field',
         value: formData.city,
         options: ['Aya Napa', 'Larnaca', 'Limassol', 'Nicosia', 'Paphos'],
-        placeholder: 'city',
+        // placeholder: 'city',
         name: 'city',       
         onChange: (e: React.ChangeEvent) => handleInputChange(e, 'city')
+      },
+      {
+        id: 'test',
+        label: 'Choose Your Test:',
+        type: 'select',
+        className: 'form-field',
+        value: formData.test,
+        options: ['PCR', 'LFT / Rapid', 'Antibody'],
+        placeholder: 'test',
+        name: 'test',       
+        onChange: (e: React.ChangeEvent) => handleInputChange(e, 'test')
       },
   ];
 
@@ -132,8 +143,7 @@ const Form = () : JSX.Element => {
                     />
                 </React.Fragment>
             ))}
-        </div>
-      <span className="padding-line"></span>
+        </div>  
     </>
     );
   };
@@ -156,7 +166,7 @@ const Form = () : JSX.Element => {
                 id={el.id}
                 name={el.name}
                 className={el.className}
-                value={formData.city}
+                value={el.value}
                 onChange={el.onChange}
               > 
                 {(el.options as Array<string>).map((c) => (
@@ -165,6 +175,7 @@ const Form = () : JSX.Element => {
                     </option>
                 ))}
               </select>
+              <span className="padding-line"></span>
             </React.Fragment>
           )
           : (
