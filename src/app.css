@@ -54,7 +54,7 @@ p {
 }
 
 .cards-container {
-    width: 95%;
+    width: 80%;
     height: 80%;   
     flex-wrap: wrap;
     padding-top: 1rem;

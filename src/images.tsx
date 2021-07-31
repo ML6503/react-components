@@ -2,7 +2,7 @@
 import React from 'react';
 import './app.css';
 
-const imgArr: Array<number> = Array.from(Array(9).keys());
+const imgArr: Array<number> = Array.from(Array(12).keys());
 
 const Images = (): JSX.Element => (
   <div className="cards-container flex-center">
