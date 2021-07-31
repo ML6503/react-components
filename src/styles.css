@@ -1,0 +1,80 @@
+html {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    font-size: 20px;
+  }
+  
+  body {
+    background-color: beige;
+    margin: auto;
+  }
+
+  input[type="radio"]:checked+label { font-weight: bold; }
+  input[type="radio"]:checked {
+    box-shadow: 0 0 0 3px orange;
+  }
+  
+  
+  .App {
+    font-family: sans-serif;
+   
+    text-align: center;
+  }
+  
+  .form-page {
+    background-color: beige;
+    /* text-align: center; */
+    /* height: 70vh; */
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+ 
+  }
+  
+  .form-wrapper {
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    /* height: 70vh; */
+    width: 50%;
+    justify-content: center;
+    color: #9d762f;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .form label {
+    /* width: 7rem; */
+    font-style: italic;
+  }
+  
+  .form-field {
+    /* width: 20rem; */
+    padding: 0.2rem;
+    border: 0.1rem solid #9d762f;
+  }
+  
+  .padding-line {
+    padding: 0.5rem;
+  }
+
+  .gender-raw {
+    display: flex; 
+    align-items: center;
+    justify-content: space-around;
+    /* width: 40%;    */
+}
+
+.gender-p {
+    padding-right: 0.5rem;
+    font-weight: 500;
+}
+  

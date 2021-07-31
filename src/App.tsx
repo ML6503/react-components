@@ -1,13 +1,7 @@
 import React from 'react';
-import './app.css';
-import Search from './search';
-import Images from './images';
+import './styles.css';
+import Form from './components/form';
 
-const App = (): JSX.Element => (
-  <div className="search-page">
-    <Search />
-    <Images />
-  </div>
-);
+const App = (): JSX.Element => <Form />;
 
 export default App;
