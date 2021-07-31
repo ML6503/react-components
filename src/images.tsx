@@ -19,19 +19,19 @@ const Images = (): JSX.Element => (
             alt="Random photography fom the picsum stock"
           />
           <span className="card-bottom flex-center">
-            <span  className="logo-wrapper flex-center">
+            <span className="logo-wrapper flex-center">
               <img
-              className="like-logo"
-              src="../public/like.svg"
-              alt="like logo"
+                className="like-logo"
+                src="../public/like.svg"
+                alt="like logo"
               />
               <p>100</p>
             </span>
-            <span  className="logo-wrapper flex-center">
+            <span className="logo-wrapper flex-center">
               <img
-              className="eye-logo"
-              src="../public/eye.svg"
-              alt="eye logo"
+                className="eye-logo"
+                src="../public/eye.svg"
+                alt="eye logo"
               />
               <p>1003</p>
             </span>
