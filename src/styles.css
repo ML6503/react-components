@@ -10,9 +10,16 @@ html {
     margin: auto;
   }
 
-  input[type="radio"]:checked+label { font-weight: bold; }
-  input[type="radio"]:checked {
-    box-shadow: 0 0 0 3px orange;
+
+  input[type="radio"]:checked,
+  input[type="checkbox"]:checked {
+    /* box-shadow: 0 0 0 3px o#9d762f;; */
+    color: #9d762f;;
+    border-color: #9d762f;; 
+    content: "•";
+    font-size: 30px;
+    line-height: 18px;
+    text-align: center;
   }
   
   
@@ -23,7 +30,7 @@ html {
   }
   
   .form-page {
-    background-color: beige;
+    background-color: #f5f5dc;
     /* text-align: center; */
     /* height: 70vh; */
     margin: auto;
@@ -35,6 +42,10 @@ html {
  
   }
   
+  .fill-p {
+    margin: 0;
+  }
+
   .form-wrapper {
     padding-top: 1rem;
     display: flex;
@@ -56,8 +67,26 @@ html {
     font-style: italic;
   }
   
-  .form-field {
+  .input-wrapper {
+      width: 100%;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+
+  .input-wrapper label {
+    width: 30%;
+}
+
+label[for=gdpr]  {
+    width: fit-content;
+    font-size: 0.9rem;
+}
+
+.form-field {
     /* width: 20rem; */
+    width: 70%;
     padding: 0.2rem;
     border: 0.1rem solid #9d762f;
   }
@@ -76,5 +105,16 @@ html {
 .gender-p {
     padding-right: 0.5rem;
     font-weight: 500;
+    text-transform: capitalize;
 }
-  
+
+.submit {
+    border: 0.1rem solid #9d762f;
+    border-radius: 0.5rem;
+    width: 50%;
+    height: 2rem;
+    text-transform: uppercase;
+    background-color: #e6d6b0;
+    color: #9d762f;
+    font-weight: 800;
+}

@@ -1,134 +1,168 @@
 import React, { useState } from 'react';
 import '../styles.css';
-import { InputEl } from './interface';
+import { InputEl, FormProps, Result } from './interface';
+import { inputData } from './inputData';
+import { initialStateValue } from './initialStateValue';
+import { getDate } from './helpers';
 const keygen = require("keygenerator");
 
-const Form = () : JSX.Element => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    dob: '',
-    email: '',
-    gender: '',
-    city: 'Aya Napa',
-    gdpr: '',
-    test: 'PCR',
-    testResultNotice: ''
-  });
+const Form:  React.FC<FormProps> = ({
+  // setFormCounter,
+//   formCounter,
+  setResults,
+  results }) => {
 
-  const handleInputChange = (event: React.ChangeEvent, inputName: string) => {
+  const [formData, setFormData] = useState(initialStateValue);
+  
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     event.persist();
-    // let newData = Object.keys(formData).filter((d) => d === inputName);
-    console.log('event target value ', (event.target as HTMLInputElement).value);
-    let newFormData = { ...formData };
- 
-    newFormData[inputName] = (event.target as HTMLInputElement).value;
+    const { name, type, value, id } = event.target;
+    const isChecked = (event.target as HTMLInputElement).checked;
+    const val =
+      type === 'checkbox' ? isChecked : name === 'gender' ? id : value; 
 
-    setFormData({
-      ...newFormData
-    });
+    console.log('event target value ', value);
+
+    setFormData((oldValues) => ({ ...oldValues, [name]: val }));
+
+    // let inputName = (event.target as HTMLInputElement).name;    
+    // console.log('event target value ', inputName);
+    // let newFormData = { ...formData };
+    // if(inputName === 'gdpr') {
+    //     newFormData[inputName] = (event.target as HTMLInputElement).checked;   
+    // } else {
+    //     newFormData[inputName] = (event.target as HTMLInputElement).value;        
+
+    // } 
+
+    // setFormData({
+    //   ...newFormData
+    // });
   };
   console.log('new Data', formData);
-  const inputData: Array<InputEl > = [
-    {
-      id: 'firstName',
-      label: 'First Name:',
-      type: 'text',
-      className: 'form-field',
-      value: formData.firstName,
-      placeholder: 'First Name',
-      name: 'firstName',
-      onChange: (e: React.ChangeEvent) => handleInputChange(e, 'firstName')
-    },
-    {
-      id: 'lastName',
-      label: 'Last Name:',
-      type: 'text',
-      className: 'form-field',
-      value: formData.lastName,
-      placeholder: 'Last Name',
-      name: 'lastName',
-      onChange: (e: React.ChangeEvent) => handleInputChange(e, 'lastName')
-    },
-    {
-      id: 'email',
-      label: 'Email:',
-      type: 'email',
-      className: 'form-field',
-      value: formData.email,
-      placeholder: 'email',
-      name: 'email',
-      pattern: '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$',
-      onChange: (e: React.ChangeEvent) => handleInputChange(e, 'email')
-    },
-    {
-      id: 'dob',
-      label: 'Date of Birth:',
-      type: 'date',
-      className: 'form-field',
-      value: formData.dob,
-      placeholder: 'dob',
-      name: 'dob',
-      pattern: '/^([0-9]{2})/([0-9]{2})/([0-9]{4})$/',
-      onChange: (e: React.ChangeEvent) => handleInputChange(e, 'dob')
-    },
-    {
-      id: 'male',
-      label: 'male:',
-      type: 'radio',
-      className: 'form-field',
-      value: 'male',     
-      name: 'gender',
-      onChange: (e: React.ChangeEvent) => handleInputChange(e, 'gender')
-    },
-    {
-        id: 'female',
-        label: 'female:',
-        type: 'radio',
-        className: 'form-field',
-        value: 'female',     
-        name: 'gender',
-        onChange: (e: React.ChangeEvent) => handleInputChange(e, 'gender')
-      },
-      {
-        id: 'city',
-        label: 'City:',
-        type: 'select',
-        className: 'form-field',
-        value: formData.city,
-        options: ['Aya Napa', 'Larnaca', 'Limassol', 'Nicosia', 'Paphos'],
-        // placeholder: 'city',
-        name: 'city',       
-        onChange: (e: React.ChangeEvent) => handleInputChange(e, 'city')
-      },
-      {
-        id: 'test',
-        label: 'Choose Your Test:',
-        type: 'select',
-        className: 'form-field',
-        value: formData.test,
-        options: ['PCR', 'LFT / Rapid', 'Antibody'],
-        placeholder: 'test',
-        name: 'test',       
-        onChange: (e: React.ChangeEvent) => handleInputChange(e, 'test')
-      },
-  ];
 
-  const handleSubmit = () => {
+  // const inputData: Array<InputEl > = [
+  //   {
+  //     id: 'firstName',
+  //     label: 'First Name:',
+  //     type: 'text',
+  //     className: 'form-field',
+  //     value: formData.firstName,
+  //     placeholder: 'First Name',
+  //     name: 'firstName',
+  //     onChange: (e: React.ChangeEvent) => handleInputChange(e)
+  //   },
+  //   {
+  //     id: 'lastName',
+  //     label: 'Last Name:',
+  //     type: 'text',
+  //     className: 'form-field',
+  //     value: formData.lastName,
+  //     placeholder: 'Last Name',
+  //     name: 'lastName',
+  //     onChange: (e: React.ChangeEvent) => handleInputChange(e)
+  //   },
+  //   {
+  //     id: 'email',
+  //     label: 'Email:',
+  //     type: 'email',
+  //     className: 'form-field',
+  //     value: formData.email,
+  //     placeholder: 'email',
+  //     name: 'email',
+  //     pattern: '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$',
+  //     onChange: (e: React.ChangeEvent) => handleInputChange(e)
+  //   },
+  //   {
+  //     id: 'dob',
+  //     label: 'Date of Birth:',
+  //     type: 'date',
+  //     className: 'form-field',
+  //     value: formData.dob,
+  //     placeholder: 'dob',
+  //     name: 'dob',
+  //     pattern: '/^([0-9]{2})/([0-9]{2})/([0-9]{4})$/',
+  //     onChange: (e: React.ChangeEvent) => handleInputChange(e)
+  //   },
+  //   {
+  //     id: 'male',
+  //     label: 'male:',
+  //     type: 'radio',
+  //     className: 'form-field',
+  //     value: 'male',     
+  //     name: 'gender',
+  //     isChecked: false,
+  //     onChange: (e: React.ChangeEvent) => handleInputChange(e)
+  //   },
+  //   {
+  //       id: 'female',
+  //       label: 'female:',
+  //       type: 'radio',
+  //       className: 'form-field',
+  //       value: 'female',     
+  //       name: 'gender',
+  //       isChecked: false,
+  //       onChange: (e: React.ChangeEvent) => handleInputChange(e)
+  //     },
+  //     {
+  //       id: 'city',
+  //       label: 'City:',
+  //       type: 'select',
+  //       className: 'form-field',
+  //       value: formData.city,
+  //       options: ['Aya Napa', 'Larnaca', 'Limassol', 'Nicosia', 'Paphos'],
+  //       // placeholder: 'city',
+  //       name: 'city',       
+  //       onChange: (e: React.ChangeEvent) => handleInputChange(e)
+  //     },
+  //     {
+  //       id: 'test',
+  //       label: 'Choose Your Test:',
+  //       type: 'select',
+  //       className: 'form-field',
+  //       value: formData.test,
+  //       options: ['PCR', 'LFT / Rapid', 'Antibody'],
+  //       placeholder: 'test',
+  //       name: 'test',       
+  //       onChange: (e: React.ChangeEvent) => handleInputChange(e)
+  //     },
+  //     {
+  //       id: 'gdpr',
+  //       label: 'I consent to my personal data processing according to GDPR:',
+  //       type: 'checkbox',
+  //       className: 'gdpr',         
+  //       name: 'gdpr',
+  //       isChecked: formData.gdpr,      
+  //       onChange: (e: React.ChangeEvent) => handleInputChange(e)
+  //     },
+  // ];
+
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     console.log('FORM DATA', formData);
+    // setFormCounter(formCounter + 1);
+    let result: Result = { ...formData, id: keygen.number(), date: getDate() };
+
+    setResults((oldResults: Array<Result>) => [...oldResults, result]);
+
+    setFormData(initialStateValue);
+    alert('you got infected with COVID-19! stay were you are. Ambulance is on the way!');
+    // toValidate(result);   
+   
   };
 
   let genderOptions: Array<InputEl> | [] = [];
-  const gender = (el: InputEl ) => {
-     
+  const gender = (el: InputEl ) => {     
       genderOptions = [...genderOptions, el];
  
       return genderOptions.length === 2 && (
         <>               
         <div className="gender-raw">
-            <p className="gender-p">Gender: </p>
+            <p className="gender-p">{el.name}: </p>
             {genderOptions.map(g => (
-                <React.Fragment key={keygen.number()}>
+                <React.Fragment key={g.id}>
                     <label htmlFor={g.id} >
                         {g.label}
                     </label>
@@ -139,7 +173,8 @@ const Form = () : JSX.Element => {
                         className={g.className}
                         placeholder={g.placeholder}
                         name={g.name}
-                        onChange={g.onChange}
+                        onChange={handleInputChange}
+                        required               
                     />
                 </React.Fragment>
             ))}
@@ -150,15 +185,15 @@ const Form = () : JSX.Element => {
 
   return (
     <div className="form-page">
-      <h1>COVID-19 TEST FORM</h1>
-      <p>Please fill all fields below</p>
+      <h2>COVID-19 TEST FORM</h2>
+      <p className="fill-p">Please fill all fields below</p>
       <div className="form-wrapper">
         <form className="form" onSubmit={handleSubmit}>
-          {inputData.map((el) => el.name === 'gender' ?
+          {inputData.map((el) => el.type === 'radio' ?
           gender(el) :
           el.type === 'select' ?
           (
-            <React.Fragment key={keygen.number()}>
+            <React.Fragment key={el.id}>
               <label htmlFor={el.id} >
                 {el.label}
               </label>
@@ -167,19 +202,20 @@ const Form = () : JSX.Element => {
                 name={el.name}
                 className={el.className}
                 value={el.value}
-                onChange={el.onChange}
+                onChange={handleInputChange}
+                required
               > 
                 {(el.options as Array<string>).map((c) => (
-                    <option value={c} key={keygen.number()}>
-                        {c}
-                    </option>
+                  <option value={c} key={c}>
+                    {c}
+                  </option>
                 ))}
               </select>
               <span className="padding-line"></span>
             </React.Fragment>
           )
           : (
-            <React.Fragment key={keygen.number()}>
+            <div className="input-wrapper" key={el.id}>
               <label htmlFor={el.id} >
                 {el.label}
               </label>
@@ -190,20 +226,13 @@ const Form = () : JSX.Element => {
                 className={el.className}
                 placeholder={el.placeholder}
                 name={el.name}
-                onChange={el.onChange}
-              />
-
-              <span className="padding-line"></span>
-            </React.Fragment>
-            ) 
-             
+                onChange={handleInputChange}
+                pattern={el.pattern}
+                required
+              />              
+            </div>)   
           )}
-
-          {/* <label>
-          Last Name:
-          <input type="text" {...bindLastName} />
-        </label>
-        <input type="submit" value="Submit" /> */}
+          <button className="submit" type='submit'>Submit</button>
         </form>
       </div>
     </div>
