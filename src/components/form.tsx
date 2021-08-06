@@ -6,11 +6,7 @@ import { initialStateValue } from './initialStateValue';
 import { getDate } from './helpers';
 const keygen = require("keygenerator");
 
-const Form:  React.FC<FormProps> = ({
-  // setFormCounter,
-//   formCounter,
-  setResults,
-  results }) => {
+const Form:  React.FC<FormProps> = ({  setResults }) => {
 
   const [formData, setFormData] = useState(initialStateValue);
   
@@ -40,7 +36,7 @@ const Form:  React.FC<FormProps> = ({
     //   ...newFormData
     // });
   };
-  console.log('new Data', formData);
+ 
 
   // const inputData: Array<InputEl > = [
   //   {
@@ -146,9 +142,9 @@ const Form:  React.FC<FormProps> = ({
     let result: Result = { ...formData, id: keygen.number(), date: getDate() };
 
     setResults((oldResults: Array<Result>) => [...oldResults, result]);
-
     setFormData(initialStateValue);
-    alert('you got infected with COVID-19! stay were you are. Ambulance is on the way!');
+    console.log('form Data after submit', formData);
+    // alert('you got infected with COVID-19! stay were you are. Ambulance is on the way!');
     // toValidate(result);   
    
   };
@@ -169,9 +165,9 @@ const Form:  React.FC<FormProps> = ({
                     <input
                         id={g.id}
                         type={g.type}
-                        value={g.value}
+                        // value={g.value}
                         className={g.className}
-                        placeholder={g.placeholder}
+                        // placeholder={g.placeholder}
                         name={g.name}
                         onChange={handleInputChange}
                         required               
@@ -201,7 +197,8 @@ const Form:  React.FC<FormProps> = ({
                 id={el.id}
                 name={el.name}
                 className={el.className}
-                value={el.value}
+                // value={el.value}
+                value={formData[el.id]}
                 onChange={handleInputChange}
                 required
               > 
@@ -222,7 +219,8 @@ const Form:  React.FC<FormProps> = ({
               <input
                 id={el.id}
                 type={el.type}
-                value={el.value}
+                // value={el.value}
+                value={formData[el.id]}
                 className={el.className}
                 placeholder={el.placeholder}
                 name={el.name}

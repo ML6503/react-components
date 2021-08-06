@@ -9,20 +9,30 @@ const Blank = () => {
 
   console.log('TEST RESULTS', results);
   const formResult = (result: Result) => (
-    <React.Fragment key={result.id}>
-      <p>COVID-19 Test Result</p>
+    <div className="result-single" key={result.id}>
+      <p className="result-para">COVID-19 Test</p>
       {/* <p>Filled Form id: {result.id}</p> */}
       {/* <p>Dated: {result.date}</p> */}
       <dl>
         {Object.keys(result).map((field) => (
           <React.Fragment key={field}>
-            <dt>{field}</dt>
+            <dt className="result-field">{field}: </dt>
             <dd>{result[field]}</dd>
           </React.Fragment>
         ))}
       </dl>
-    </React.Fragment>
+    </div>
   );
+
+  const ColoredLine = ({ color }) => (
+    <hr
+        style={{
+            marginTop: 50,
+            // color: color,           
+            borderColor: color,           
+        }}
+    />
+);
 
   return (
     <>
@@ -32,8 +42,12 @@ const Blank = () => {
         setResults={setResults}
         results={results}
       />
-      {results.length !== 0 &&
-        results.map((result: Result) => formResult(result))}      
+    
+      {results.length !== 0 && <ColoredLine color="#9d762f" />}
+      <div className="result-blank">
+       {results.length !== 0 &&
+        results.map((result: Result) => formResult(result))} 
+      </div>     
     </>
   );
 };

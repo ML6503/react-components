@@ -118,3 +118,23 @@ label[for=gdpr]  {
     color: #9d762f;
     font-weight: 800;
 }
+
+.result-field {
+  text-transform: capitalize;
+}
+
+.result-blank {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #9d762f;
+}
+
+.result-single {
+  border: 0.1rem solid #9d762f;
+  border-radius: 0.5rem; 
+}
+
+.result-para {
+  text-align: center;
+}
