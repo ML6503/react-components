@@ -12,17 +12,6 @@ export interface InputEl {
         // onChange: (e: React.ChangeEvent) => void;      
 };
 
-// export interface FormSubmitData {
-//     firstName: string;
-//     lastName: string;
-//     dob: string;
-//     email: string;
-//     gender: string;
-//     city: string;
-//     gdpr: string;
-//     test: string; 
-//   };
-
 export interface Result {
   id: number;
   date: string;
@@ -37,9 +26,6 @@ export interface Result {
 }
       
 export interface FormProps {
-//   formCounter: number;
-//   setFormCounter: React.Dispatch<React.SetStateAction<number>>;
   setResults: React.Dispatch<React.SetStateAction<Result[]>>;
-  results: Result[];
 }
       

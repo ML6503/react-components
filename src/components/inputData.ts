@@ -6,27 +6,25 @@ export const inputData: Array<InputEl> = [
     label: 'First Name:',
     type: 'text',
     className: 'form-field',
-    // value: formData.firstName,
     placeholder: 'First Name',
     name: 'firstName',
-    pattern: `^([a-zA-Z]{2,}s?([a-zA-Z]{1,})?)`
+    // pattern: `^([a-zA-Z]{2,}s?([a-zA-Z]{1,})?)`
+    pattern: `([a-zA-Z',.-]+( [a-zA-Z',.-]+)*){2,30}`
   },
   {
     id: 'lastName',
     label: 'Last Name:',
     type: 'text',
-    className: 'form-field',
-    // value: formData.lastName,
+    className: 'form-field',   
     placeholder: 'Last Name',
     name: 'lastName',
-    pattern: `^([a-zA-Z]{2,}s?([a-zA-Z]{1,})?)`
+    pattern: `([a-zA-Z',.-]+( [a-zA-Z',.-]+)*){2,30}`
   },
   {
     id: 'email',
     label: 'Email:',
     type: 'email',
-    className: 'form-field',
-    // value: formData.email,
+    className: 'form-field',   
     placeholder: 'email',
     name: 'email',
     pattern: '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$'
@@ -35,8 +33,7 @@ export const inputData: Array<InputEl> = [
     id: 'dob',
     label: 'Date of Birth:',
     type: 'date',
-    className: 'form-field',
-    // value: formData.dob,
+    className: 'form-field',  
     placeholder: 'dob',
     name: 'dob',
     pattern: '/^([0-9]{2})/([0-9]{2})/([0-9]{4})$/'
@@ -61,8 +58,7 @@ export const inputData: Array<InputEl> = [
     id: 'city',
     label: 'City:',
     type: 'select',
-    className: 'form-field',
-    // value: formData.city,
+    className: 'form-field',  
     options: ['Aya Napa', 'Larnaca', 'Limassol', 'Nicosia', 'Paphos'],
     placeholder: 'city',
     name: 'city'
@@ -75,8 +71,8 @@ export const inputData: Array<InputEl> = [
     // value: formData.test,
     options: ['PCR', 'LFT / Rapid', 'Antibody'],
     placeholder: 'test',
-    name: 'test',       
-    // onChange: (e: React.ChangeEvent) => handleInputChange(e)
+    name: 'test',  
+    
   },
   {
     id: 'gdpr',
@@ -84,7 +80,6 @@ export const inputData: Array<InputEl> = [
     type: 'checkbox',
     className: 'gdpr',         
     name: 'gdpr',
-    isChecked: false,      
-    // onChange: (e: React.ChangeEvent) => handleInputChange(e)
-  },
+    isChecked: false   
+  }
 ];
