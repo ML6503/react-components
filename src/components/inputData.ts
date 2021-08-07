@@ -1,6 +1,6 @@
 import { InputEl } from './interface';
 
-export const inputData: Array<InputEl> = [
+const inputData: Array<InputEl> = [
   {
     id: 'firstName',
     label: 'First Name:',
@@ -9,22 +9,22 @@ export const inputData: Array<InputEl> = [
     placeholder: 'First Name',
     name: 'firstName',
     // pattern: `^([a-zA-Z]{2,}s?([a-zA-Z]{1,})?)`
-    pattern: `([a-zA-Z',.-]+( [a-zA-Z',.-]+)*){2,30}`
+    pattern: "([a-zA-Z',.-]+( [a-zA-Z',.-]+)*){2,30}"
   },
   {
     id: 'lastName',
     label: 'Last Name:',
     type: 'text',
-    className: 'form-field',   
+    className: 'form-field',
     placeholder: 'Last Name',
     name: 'lastName',
-    pattern: `([a-zA-Z',.-]+( [a-zA-Z',.-]+)*){2,30}`
+    pattern: "([a-zA-Z',.-]+( [a-zA-Z',.-]+)*){2,30}"
   },
   {
     id: 'email',
     label: 'Email:',
     type: 'email',
-    className: 'form-field',   
+    className: 'form-field',
     placeholder: 'email',
     name: 'email',
     pattern: '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$'
@@ -33,7 +33,7 @@ export const inputData: Array<InputEl> = [
     id: 'dob',
     label: 'Date of Birth:',
     type: 'date',
-    className: 'form-field',  
+    className: 'form-field',
     placeholder: 'dob',
     name: 'dob',
     pattern: '/^([0-9]{2})/([0-9]{2})/([0-9]{4})$/'
@@ -58,7 +58,7 @@ export const inputData: Array<InputEl> = [
     id: 'city',
     label: 'City:',
     type: 'select',
-    className: 'form-field',  
+    className: 'form-field',
     options: ['Aya Napa', 'Larnaca', 'Limassol', 'Nicosia', 'Paphos'],
     placeholder: 'city',
     name: 'city'
@@ -71,15 +71,16 @@ export const inputData: Array<InputEl> = [
     // value: formData.test,
     options: ['PCR', 'LFT / Rapid', 'Antibody'],
     placeholder: 'test',
-    name: 'test',  
-    
+    name: 'test'
   },
   {
     id: 'gdpr',
     label: 'I consent to my personal data processing according to GDPR:',
     type: 'checkbox',
-    className: 'gdpr',         
+    className: 'gdpr',
     name: 'gdpr',
-    isChecked: false   
+    isChecked: false
   }
 ];
+
+export default inputData;
