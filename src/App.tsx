@@ -1,13 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './app.css';
-import Search from './search';
-import Images from './images';
+import NewsPage from './components/newsPage';
 
-const App = (): JSX.Element => (
-  <div className="search-page">
-    <Search />
-    <Images />
-  </div>
-);
+
+const App = (): JSX.Element => <NewsPage />;
 
 export default App;
