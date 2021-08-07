@@ -1,13 +1,7 @@
-import React from "react";
-import "./app.css";
-import Search from './search';
+import React from 'react';
+import './styles.css';
+import Blank from './components/blank';
 
-const App = () => {
-  
-    return(
-      <Search />
-    );
-  };
-
+const App = (): JSX.Element => <Blank />;
 
 export default App;

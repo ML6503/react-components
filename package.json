@@ -26,6 +26,8 @@
   "author": "ML",
   "license": "ISC",
   "dependencies": {
+    "@types/prop-types": "^15.7.4",
+    "keygenerator": "^1.0.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
