@@ -6,15 +6,21 @@ import SearchBtn from './searchBtn';
 import { urlBase, apiKey } from '../../utils/data';
 import { SearchProps } from '../../utils/interface';
 
-const Search: React.FC<SearchProps> = ({ setDataApi })  => {
+const Search: React.FC<SearchProps> = ({ setDataApi, currentPage = 1 })  => {
   const [inputValue, setInputValue] = useState('');
   const [urlQuery, setUrlQuery] = useState('');
+
+  let extraQuery = `everything?q=Apple&from=2021-08-07&sortBy=popularity&page=${currentPage}&apiKey=${apiKey}`;
  
   const getUrl = (urlQuery: string) => {
        
     return urlBase.concat(urlQuery);
   }
  
+  useEffect(() => {
+    setUrlQuery(extraQuery);
+  }, [currentPage]);
+
   useEffect(() => {
     urlQuery.length !== 0 && fetch(getUrl(urlQuery))
       .then(res => {
@@ -29,7 +35,7 @@ const Search: React.FC<SearchProps> = ({ setDataApi })  => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    let extraQuery = `everything?q=Apple&from=2021-08-07&sortBy=popularity&apiKey=${apiKey}`;
+    
     setUrlQuery(extraQuery);
   };
 

@@ -85,6 +85,7 @@ p, h3 {
 .card {
     /* width: 12rem;
     height: 15rem; */
+    width: 100%;
     min-height: 13.5rem;
     padding: 0.6rem 0 0.2rem 0;
     background-color: #addd;
@@ -96,7 +97,7 @@ p, h3 {
 } 
 
 .details {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-style: italic;
     color: #2f4f4f;
     /* background-color:#d3d3d3 ; */
@@ -114,9 +115,10 @@ p, h3 {
 
 .img {  
     /* width: 10rem; */
-    height: 7rem;
+    height: 8rem;
     border-radius: 0.5rem;
-    float: left; 
+    float: left;
+    padding-right: 0.5rem;
 }
 
 .article-container {
@@ -124,12 +126,129 @@ p, h3 {
     height: fit-content;    
     align-items: center;
     justify-content: center;
-    font-size: 0.7rem;
-    /* font-weight: bold; */
-    
+    font-size: 0.8rem;   
+    /* font-weight: bold; */    
 }
 
+.pagination-container {
+    /* width: 30%; */
+    padding-top: 1rem;
+    padding-right: 10%;
+    margin-left: auto;
+    
+}
+.pagination {
+    background-color: #addd;
+    box-shadow: 0.2rem 0.2rem #1e90ff;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
 
+.pagination a {
+  text-decoration: none;
+  color: #000000;
+  display: inline-block;
+  background: #cccccc;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.pagination a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.pagination ol {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+  }
+
+.pagination  li {
+    display: inline-block;
+    margin: 0 2.5px;
+   
+}
+
+.active a {
+    background: #ffffff;
+}
+
+.active a:hover {
+    text-decoration: none;
+    cursor: default
+}
+
+.prev.disabled, .next.disabled {
+    cursor: default;
+    background: #ccc;
+    color: #888;
+    border-color: #888;
+}
+.prev.disabled:hover, .next.disabled:hover {
+    cursor: default;
+    text-decoration: none;
+}
+
+/*hide some btns for pagination*/
+@media (min-width: 768px) {
+    li:first-child, li.active-sibling, li.active, li.active + li, li:last-child {
+        display: inline-block !important;
+   }
+    li:first-child:nth-last-child(n+8) ~ li {
+        display: none;
+   }
+    li:first-child:nth-last-child(n+8) ~ li.active-sibling:before {
+        content: "\2026";
+        font-size: 24px;
+        display: inline-block;
+        margin-right: 2.5px;
+   }
+    li:first-child:nth-last-child(n+8) ~ li.active + li:after {
+        content: "\2026";
+        font-size: 24px;
+        display: inline-block;
+        margin-left: 2.5px;
+   }
+    li:first-child:nth-last-child(n+8) ~ li:nth-last-child(-n+5) {
+        display: inline-block;
+   }
+    li:first-child:nth-last-child(n+8) ~ li:nth-last-child(5):before {
+        content: "\2026";
+        font-size: 24px;
+        display: inline-block;
+        margin-right: 2.5px;
+   }
+    li:first-child:nth-last-child(n+8) ~ li:nth-child(-n+2):before, li:first-child:nth-last-child(n+8) ~ li:nth-last-child(-n+2):before, li:first-child:nth-last-child(n+8) ~ li.active-sibling:nth-last-child(-n+4):before, li:first-child:nth-last-child(n+8) ~ li:nth-child(-n+2):after, li:first-child:nth-last-child(n+8) ~ li:nth-last-child(-n+2):after, li:first-child:nth-last-child(n+8) ~ li.active-sibling:nth-last-child(-n+4):after {
+        display: none !important;
+   }
+    li:first-child:nth-last-child(n+8).active ~ li:nth-last-child(-n+5), li:first-child:nth-last-child(n+8) ~ li.active ~ li:nth-last-child(-n+5) {
+        display: none;
+   }
+    li:first-child:nth-last-child(n+8).active ~ li:nth-last-child(-n+5):before, li:first-child:nth-last-child(n+8) ~ li.active ~ li:nth-last-child(-n+5):before {
+        display: none;
+   }
+    li:first-child:nth-last-child(n+8).active ~ li:nth-child(-n+5), li:first-child:nth-last-child(n+8) ~ li.active ~ li:nth-child(-n+5) {
+        display: inline-block;
+   }
+    li:first-child:nth-last-child(n+8).active ~ li:nth-child(-n+4):after, li:first-child:nth-last-child(n+8) ~ li.active ~ li:nth-child(-n+4):after {
+        display: none;
+   }
+    li:first-child:nth-last-child(n+8).active ~ li:nth-child(5):after, li:first-child:nth-last-child(n+8) ~ li.active ~ li:nth-child(5):after {
+        content: "\2026";
+        font-size: 24px;
+        display: inline-block;
+        margin-left: 2.5px;
+   }
+    li:first-child:nth-last-child(n+8).active:before, li:first-child:nth-last-child(n+8) ~ li.active:before, li:first-child:nth-last-child(n+8).active:after, li:first-child:nth-last-child(n+8) ~ li.active:after {
+        display: none;
+   }
+}
+
+/*end of hide btns logics*/
 /* 
 .logo-wrapper {
     width: 2.5rem;

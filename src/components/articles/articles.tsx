@@ -1,45 +1,35 @@
 // Unsplash Source API for random images
-import React from 'react';
+import React, { useState } from 'react';
 import '../../app.css';
 import { ArticlesProps } from '../../utils/interface';
+import OneArticle from './oneArticle';
+import Pagination from './pagination';
+
+// const pageLinksNumber = 50;
+const defaultArticleOnPageNumber = 20;
 
 
-const Articles: React.FC<ArticlesProps> = ({ dataApi }) => {
+const Articles: React.FC<ArticlesProps> = ({ dataApi, currentPage, setCurrentPage }) => {
 const articles = dataApi.articles;
 const totalResults = dataApi.totalResults;
+const [articleOnPageNumber, setArticleOnPageNumber] = useState(defaultArticleOnPageNumber);
 
+const pageLinksNumber = () => Math.ceil(totalResults / articleOnPageNumber);
 console.log('Articles', articles);
 console.log('totalResults', totalResults);
+console.log(' currentPage',  currentPage, pageLinksNumber());
+
+const linksArr: Array<number> = Array.from(Array(pageLinksNumber()).keys());
+
 
   return (
+    <>
+    <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} linksArr={linksArr} pageLinksNumber={pageLinksNumber} />
     <section className="cards-container flex-center">
-      {articles.map((el) => (
-        <div key={el.title} className="card-container flex-center">
-          <div className="card flex-center">
-            <span className="details">
-              <h3>{el.title}</h3>
-              {el.author && <p>by: {el.author}</p>}
-            </span>
-            
-            <span className="article-container flex-center">
-                  
-               <article className="article ">
-               { el.urlToImage && <img
-              className="img"
-              src={el.urlToImage}
-              alt={"Image for article".concat(el.title)}
-             
-            /> }        
-                 <p>{el.description}</p>
-                 <a href={el.url}>read more at {el.source.name}</a>
-               </article>
-               
-              
-            </span>
-          </div>
-        </div>
-      ))}
+      {articles.map((article) => < OneArticle article={article} key={ article.title} />
+        )}
     </section>
+    </>
   );
 
 };
