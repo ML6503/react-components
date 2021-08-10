@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import '../../app.css';
 import { ArticlesProps } from '../../utils/interface';
 import OneArticle from './oneArticle';
-import Pagination from './pagination';
+import Pagination from '../pagination/pagination';
 
 // const pageLinksNumber = 50;
 const defaultArticleOnPageNumber = 20;
