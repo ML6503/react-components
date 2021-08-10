@@ -1,6 +1,6 @@
 // Unsplash Source API for random images
 import React, { useState } from 'react';
-import '../../app.css';
+import './articles.css';
 import { ArticlesProps } from '../../utils/interface';
 import OneArticle from './oneArticle';
 import Pagination from '../pagination/pagination';

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../../app.css';
+import './search.css';
 import Input from './input';
 import Label from './label';
 import SearchBtn from './searchBtn';

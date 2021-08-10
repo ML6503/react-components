@@ -1,5 +1,5 @@
 import React from "react";
-import '../../app.css';
+import './articles.css';
 import { ArticleProps } from '../../utils/interface';
 
 const OneArticle: React.FC<ArticleProps> = ({ article }): JSX.Element => (

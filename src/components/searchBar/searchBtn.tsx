@@ -1,5 +1,5 @@
 import React from "react";
-import '../../app.css';
+import './search.css';
 
 const SearchBtn = (): JSX.Element => (
     <button className="search-btn" type="submit">

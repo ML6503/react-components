@@ -1,5 +1,5 @@
 import React from "react";
-import '../../app.css';
+import './search.css';
 
 const Label = () => (
     <label htmlFor="header-search" className="search-label">

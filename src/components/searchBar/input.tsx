@@ -1,5 +1,5 @@
 import React from "react";
-import '../../app.css';
+import './search.css';
 import { InputProps } from '../../utils/interface';
 
  const Input: React.FC<InputProps> = ({ inputValue, setInputValue}) => {
