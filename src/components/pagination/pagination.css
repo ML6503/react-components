@@ -1,10 +1,10 @@
 .pagination-container {
     /* width: 30%; */
+    min-width: 38vw;
     padding-top: 1rem;
-    padding-right: 10%;
+    padding-right: 9%;
     margin-left: auto;
-    justify-content: space-between;
-    width: 30%;
+    justify-content: space-between;    
     color:  #696969;   
 }
 .pagination {

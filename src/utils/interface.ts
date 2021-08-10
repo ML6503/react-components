@@ -6,6 +6,7 @@ export interface InputProps {
 export interface SearchProps {
     setDataApi: React.Dispatch<React.SetStateAction<string>>;
     currentPage: number;
+    articlesOnPageNumber: number;
 };
 
 export interface PublishingSource {
@@ -35,7 +36,9 @@ export interface DataApi {
 export interface ArticlesProps {
     dataApi: DataApi;
     currentPage: number;
-    setCurrentPage:React.Dispatch<React.SetStateAction<number>>;
+    setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+    articlesOnPageNumber: number;
+    setArticlesOnPageNumber: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export interface ArticleProps {
@@ -44,7 +47,9 @@ export interface ArticleProps {
 
 export interface PaginationsProps {
     currentPage: number;
-    setCurrentPage:React.Dispatch<React.SetStateAction<number>>;
+    setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
     linksArr: Array<number>;
     pageLinksNumber: () => number;
+    inputValue: number;
+    setInputValue: React.Dispatch<React.SetStateAction<number>>;
 };
