@@ -30,6 +30,54 @@ p, h3 {
     align-items: center;
 }
 
+.loading-bar {
+    width: 80%;
+    height: 1rem;
+    min-height: 1rem;
+    margin-top: 0.5rem;
+    border: 0.1rem solid #696969;
+    border-radius: 0.5rem;
+    background-image:
+      repeating-linear-gradient(
+       45deg,
+       #addd,
+       #addd 0.55rem,
+       #ccccff 0.5rem,
+       #ccccff 1rem);
+    background-size: 1rem 1rem;
+    animation: move .5s linear infinite;
+  }
+  
+  @keyframes move {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 1rem 0;
+    }
+  }
+
+
+  .error {
+    width: 50%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: beige;
+    box-shadow: 0.2rem 0.2rem #1e90ff;
+    border-radius: 0.5rem;
+    margin-top: 5rem;
+    text-align: center;
+  }
+
+  .error-back-btn {
+    background: #696969;
+    height: 2rem;
+    border-radius: 0.5rem;
+    color: #ffffff;
+  }
+
 /*end of hide btns logics*/
 /* 
 .logo-wrapper {

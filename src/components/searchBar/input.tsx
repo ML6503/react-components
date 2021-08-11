@@ -8,6 +8,9 @@ import { InputProps } from '../../utils/interface';
         <span className="search-input-container">
         <input
           type="text"
+          minLength={1}
+          pattern="^\d*[a-zA-Z][a-zA-Z0-9]*$"
+          required
           id="header-search"
           placeholder="Search news"
           name="s"

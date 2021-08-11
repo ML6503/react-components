@@ -7,6 +7,8 @@ export interface SearchProps {
     setDataApi: React.Dispatch<React.SetStateAction<string>>;
     currentPage: number;
     articlesOnPageNumber: number;
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+    setErrorHttp: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export interface PublishingSource {
@@ -52,4 +54,9 @@ export interface PaginationsProps {
     pageLinksNumber: () => number;
     inputValue: number;
     setInputValue: React.Dispatch<React.SetStateAction<number>>;
+};
+
+export interface SortBySelectProps {
+    sortValue: string;
+    setSortValue: React.Dispatch<React.SetStateAction<string>>;
 };

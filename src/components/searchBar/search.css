@@ -32,10 +32,34 @@
     border-radius: 0.5rem;   
 }
 
+/* .search-input:invalid {
+    border: 0.25rem dashed #b06500;
+  } */
+
+.search-inputt:invalid:focus {
+    background-image: linear-gradient(pink, lightgreen);
+  }
+
 .search-btn {
     background: #696969;
     height: 2rem;
     border-radius: 0.5rem;
     color: #ffffff;
     text-transform: uppercase;
+}
+
+.sort-by-select-wrapper {
+    display: grid;
+    padding: 1rem;
+}
+
+
+.sort-by-select {
+    border-radius: 0.2rem;
+    padding: 0.2rem;
+    color: #696969;
+}
+
+label[for=sortBy]{
+    color: #696969;
 }

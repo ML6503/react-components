@@ -25,8 +25,7 @@ const linksArr: Array<number> = Array.from(Array(pageLinksNumber()).keys());
     <>
     <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} linksArr={linksArr} pageLinksNumber={pageLinksNumber} inputValue={articlesOnPageNumber} setInputValue={setArticlesOnPageNumber}/>
     <section className="cards-container flex-center">
-      {articles.map((article) => < OneArticle article={article} key={ article.title} />
-        )}
+      {articles.map((article, i) => < OneArticle article={article} key={`${article.title}-${i}`} /> )}
     </section>
     </>
   );
