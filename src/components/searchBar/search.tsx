@@ -3,27 +3,47 @@ import './search.css';
 import Input from './input';
 import Label from './label';
 import SearchBtn from './searchBtn';
-import SortBySelect from './sortBySelect';
+import SelectInput from './selectInput';
 import { urlBase, apiKey } from '../../utils/data';
 import { SearchProps } from '../../utils/interface';
 
+const selectOptionsSortBy = ['relevancy', 'popularity', 'newest'];
+const selectOptionsLanguage = ['ar', 'de', 'en', 'es', 'fr', 'he', 'it', 'nl', 'no', 'pt', 'ru', 'zh'];
+
+
 const Search: React.FC<SearchProps> = ({ setDataApi, currentPage, articlesOnPageNumber, setIsLoading, setErrorHttp })  => {
   const [inputValue, setInputValue] = useState('');
-  const [sortValue, setSortValue] = useState('');
+  const [sortByValue, setSortByValue] = useState('');
+  const [sortByLang, setSortByLang] = useState('')
   const [urlQuery, setUrlQuery] = useState('');
  
 
+  const selectInputsArr = [
+    { 
+      id: 'sortBy',
+      selectState: sortByValue,
+      setSelectState: setSortByValue,
+      options: selectOptionsSortBy
+    },
+    {
+      id: 'language',
+      selectState: sortByLang,
+      setSelectState: setSortByLang,
+      options: selectOptionsLanguage
+    }
+  ];
+
   const getUrl = () => {
-    let extraQuery = `everything?q=${inputValue}&from=2021-08-07&sortBy=${sortValue}&page=${currentPage}&pageSize=${articlesOnPageNumber}&apiKey=${apiKey}`;
+    let extraQuery = `everything?q=${inputValue}&from=2021-08-07&sortBy=${sortByValue}&language=${sortByLang}&page=${currentPage}&pageSize=${articlesOnPageNumber}&apiKey=${apiKey}`;
 
     setUrlQuery(urlBase.concat(extraQuery));
-    console.log('URL', urlQuery);
+    
   }
  
   useEffect(() => {
     // setUrlQuery(extraQuery);
     inputValue && getUrl()
-  }, [currentPage, articlesOnPageNumber, sortValue]);
+  }, [currentPage, articlesOnPageNumber, sortByValue, sortByLang ]);
 
   useEffect(() => {
 
@@ -57,10 +77,10 @@ const Search: React.FC<SearchProps> = ({ setDataApi, currentPage, articlesOnPage
     if (inputValue.length !== 0) {
       getUrl();
       setIsLoading(true);
-    }
-    
-    
+    }    
   };
+
+  console.log('URL', urlQuery);
 
   return (
     <div className="search-bar flex-center">
@@ -68,7 +88,10 @@ const Search: React.FC<SearchProps> = ({ setDataApi, currentPage, articlesOnPage
         <Label />
         <Input inputValue={inputValue} setInputValue={setInputValue} />
         <SearchBtn />
-        <SortBySelect sortValue={sortValue} setSortValue={setSortValue}/>
+        {selectInputsArr.map((input) => (
+          <SelectInput key={input.id} id={input.id} sortValue={input.selectState} setSortValue={input.setSelectState} selectOptions={input.options}/>
+          )
+        )}
       </form>
     </div>
   );

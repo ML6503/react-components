@@ -57,6 +57,9 @@ export interface PaginationsProps {
 };
 
 export interface SortBySelectProps {
+    key: string;
+    id: string;
     sortValue: string;
     setSortValue: React.Dispatch<React.SetStateAction<string>>;
+    selectOptions: Array<string>;
 };

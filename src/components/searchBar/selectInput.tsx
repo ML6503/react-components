@@ -1,30 +1,34 @@
-import React, { useState } from "react";
+import React from "react";
 import { SortBySelectProps } from '../../utils/interface';
 
+// Get display names of language in English
+let languageNames = new Intl.DisplayNames(['en'], {type: 'language'});
 
-const SortBySelect: React.FC<SortBySelectProps> = ({ sortValue, setSortValue }) => {
-    const selectOptions = ['relevancy', 'popularity', 'newest'];
+
+const SelectInput: React.FC<SortBySelectProps> = ({ id, sortValue, setSortValue, selectOptions }) => {
+  
 
     const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         e.preventDefault();
         const newValue = (e.target as HTMLSelectElement).value === 'newest' ? 'publishedAt' : (e.target as HTMLSelectElement).value;
+        
         setSortValue(newValue);
     }
 
     return (
-        <span className="sort-by-select-wrapper">
-          <label htmlFor="sortBy">sort by:</label>
+        <span className="select-wrapper">
+          <label htmlFor="sortBy">{ id === 'language' ? id : 'sort by'} :</label>
           <select
-            id="sortBy"
-            name="sortBy"
-            className="sort-by-select"            
+            id={id}
+            name={id}
+            className="select"            
             value={sortValue}
             onChange={onSelectChange}
             required
           >
             {(selectOptions as Array<string>).map((c) => (
               <option value={c} key={c}>
-                {c}
+                { id === 'language' ? languageNames.of(c) : c }
               </option>
             ))}
           </select>         
@@ -32,4 +36,4 @@ const SortBySelect: React.FC<SortBySelectProps> = ({ sortValue, setSortValue }) 
       );
 };
 
-export default SortBySelect;
+export default SelectInput;

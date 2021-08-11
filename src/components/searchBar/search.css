@@ -48,13 +48,13 @@
     text-transform: uppercase;
 }
 
-.sort-by-select-wrapper {
+.select-wrapper {
     display: grid;
     padding: 1rem;
 }
 
 
-.sort-by-select {
+.select {
     border-radius: 0.2rem;
     padding: 0.2rem;
     color: #696969;
