@@ -3,6 +3,11 @@ export interface InputProps {
     setInputValue: React.Dispatch<React.SetStateAction<string>>;
 };
 
+export interface InputDateProps {
+    inputDateValue: string;
+    setInputDateValue: React.Dispatch<React.SetStateAction<string>>;
+};
+
 export interface SearchProps {
     setDataApi: React.Dispatch<React.SetStateAction<string>>;
     currentPage: number;

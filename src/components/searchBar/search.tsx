@@ -4,17 +4,16 @@ import Input from './input';
 import Label from './label';
 import SearchBtn from './searchBtn';
 import SelectInput from './selectInput';
-import { urlBase, apiKey } from '../../utils/data';
+import InputDate from './inputDate';
+import { urlBase, apiKey, selectOptionsSortBy, selectOptionsLanguage } from '../../utils/data';
 import { SearchProps } from '../../utils/interface';
-
-const selectOptionsSortBy = ['relevancy', 'popularity', 'newest'];
-const selectOptionsLanguage = ['ar', 'de', 'en', 'es', 'fr', 'he', 'it', 'nl', 'no', 'pt', 'ru', 'zh'];
 
 
 const Search: React.FC<SearchProps> = ({ setDataApi, currentPage, articlesOnPageNumber, setIsLoading, setErrorHttp })  => {
   const [inputValue, setInputValue] = useState('');
   const [sortByValue, setSortByValue] = useState('');
-  const [sortByLang, setSortByLang] = useState('')
+  const [sortByLang, setSortByLang] = useState('');
+  const [inputDateValue, setInputDateValue] = useState('');
   const [urlQuery, setUrlQuery] = useState('');
  
 
@@ -30,11 +29,11 @@ const Search: React.FC<SearchProps> = ({ setDataApi, currentPage, articlesOnPage
       selectState: sortByLang,
       setSelectState: setSortByLang,
       options: selectOptionsLanguage
-    }
+    }  
   ];
 
   const getUrl = () => {
-    let extraQuery = `everything?q=${inputValue}&from=2021-08-07&sortBy=${sortByValue}&language=${sortByLang}&page=${currentPage}&pageSize=${articlesOnPageNumber}&apiKey=${apiKey}`;
+    let extraQuery = `everything?q=${inputValue}&from=${inputDateValue}&sortBy=${sortByValue}&language=${sortByLang}&page=${currentPage}&pageSize=${articlesOnPageNumber}&apiKey=${apiKey}`;
 
     setUrlQuery(urlBase.concat(extraQuery));
     
@@ -43,7 +42,7 @@ const Search: React.FC<SearchProps> = ({ setDataApi, currentPage, articlesOnPage
   useEffect(() => {
     // setUrlQuery(extraQuery);
     inputValue && getUrl()
-  }, [currentPage, articlesOnPageNumber, sortByValue, sortByLang ]);
+  }, [currentPage, articlesOnPageNumber, sortByValue, sortByLang, inputDateValue ]);
 
   useEffect(() => {
 
@@ -80,6 +79,7 @@ const Search: React.FC<SearchProps> = ({ setDataApi, currentPage, articlesOnPage
     }    
   };
 
+  console.log('date', inputDateValue);
   console.log('URL', urlQuery);
 
   return (
@@ -92,6 +92,7 @@ const Search: React.FC<SearchProps> = ({ setDataApi, currentPage, articlesOnPage
           <SelectInput key={input.id} id={input.id} sortValue={input.selectState} setSortValue={input.setSelectState} selectOptions={input.options}/>
           )
         )}
+        <InputDate inputDateValue={inputDateValue} setInputDateValue={setInputDateValue}/>
       </form>
     </div>
   );

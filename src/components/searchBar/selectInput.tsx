@@ -15,9 +15,17 @@ const SelectInput: React.FC<SortBySelectProps> = ({ id, sortValue, setSortValue,
         setSortValue(newValue);
     }
 
+    const showOption = (c: string) => {
+      if(id === 'language') {
+        return c === '' ? 'all' : languageNames.of(c);
+      } else {
+        return c;
+      }
+    };
+
     return (
         <span className="select-wrapper">
-          <label htmlFor="sortBy">{ id === 'language' ? id : 'sort by'} :</label>
+          <label htmlFor={id}>{ id === 'language' ? id : 'sort by'} :</label>
           <select
             id={id}
             name={id}
@@ -28,7 +36,7 @@ const SelectInput: React.FC<SortBySelectProps> = ({ id, sortValue, setSortValue,
           >
             {(selectOptions as Array<string>).map((c) => (
               <option value={c} key={c}>
-                { id === 'language' ? languageNames.of(c) : c }
+                { showOption(c) }
               </option>
             ))}
           </select>         

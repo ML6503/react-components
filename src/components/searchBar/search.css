@@ -50,16 +50,13 @@
 
 .select-wrapper {
     display: grid;
-    padding: 1rem;
+    padding: 0 1rem 1.5rem;
+    color: #696969;
 }
 
 
 .select {
     border-radius: 0.2rem;
     padding: 0.2rem;
-    color: #696969;
-}
-
-label[for=sortBy]{
     color: #696969;
 }
