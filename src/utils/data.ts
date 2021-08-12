@@ -4,4 +4,18 @@ export const urlBase = 'https://newsapi.org/v2/';
 
 export const selectOptionsSortBy = ['relevancy', 'popularity', 'newest'];
 
-export const selectOptionsLanguage = ['', 'ar', 'de', 'en', 'es', 'fr', 'he', 'it', 'nl', 'no', 'pt', 'ru', 'zh'];
+export const selectOptionsLanguage = [
+  '',
+  'ar',
+  'de',
+  'en',
+  'es',
+  'fr',
+  'he',
+  'it',
+  'nl',
+  'no',
+  'pt',
+  'ru',
+  'zh'
+];

@@ -14,7 +14,7 @@
     padding: 1rem;
 }
 
-.pagination a {
+.pagination button {
   text-decoration: none;
   color: #000000;
   display: inline-block;
@@ -25,7 +25,7 @@
   font-size: 0.7rem;
 }
 
-.pagination a:hover {
+.pagination button:hover {
     text-decoration: underline;
     cursor: pointer;
 }
@@ -43,11 +43,11 @@
    
 }
 
-.active a {
+.active button {
     background: #ffffff;
 }
 
-.active a:hover {
+.active button:hover {
     text-decoration: none;
     cursor: default
 }

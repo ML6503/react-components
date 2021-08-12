@@ -9,30 +9,55 @@ const ARTICLES_ON_PAGE_DEFAULT_NUMBER = 20;
 
 const NewsPage: React.FC = () => {
   const [dataApi, setDataApi] = useState(null);
-  const [currentPage, setCurrentPage] = useState(defaultCurrentPage);  
-  const [articlesOnPageNumber, setArticlesOnPageNumber] = useState(ARTICLES_ON_PAGE_DEFAULT_NUMBER);
+  const [currentPage, setCurrentPage] = useState(defaultCurrentPage);
+  const [articlesOnPageNumber, setArticlesOnPageNumber] = useState(
+    ARTICLES_ON_PAGE_DEFAULT_NUMBER
+  );
   const [isLoading, setIsLoading] = useState(false);
   const [errorHttp, setErrorHttp] = useState(null);
 
   return (
     <div className="search-page">
-      <Search setDataApi={setDataApi} currentPage={currentPage} articlesOnPageNumber={articlesOnPageNumber} setIsLoading={setIsLoading} setErrorHttp={setErrorHttp} />
-      { isLoading && <div className="loading-bar"></div>}
-      {dataApi && dataApi.status ===  'ok' && 
-        <Articles 
-          dataApi={dataApi as DataApi }
+      <Search
+        setDataApi={setDataApi}
+        currentPage={currentPage}
+        articlesOnPageNumber={articlesOnPageNumber}
+        setIsLoading={setIsLoading}
+        setErrorHttp={setErrorHttp}
+      />
+      {isLoading && <div className="loading-bar" />}
+      {dataApi && dataApi.status === 'ok' && (
+        <Articles
+          dataApi={dataApi as DataApi}
           currentPage={currentPage as number}
-          setCurrentPage={setCurrentPage as React.Dispatch<React.SetStateAction<number>>}
+          setCurrentPage={
+            setCurrentPage as React.Dispatch<React.SetStateAction<number>>
+          }
           articlesOnPageNumber={articlesOnPageNumber as number}
-          setArticlesOnPageNumber={setArticlesOnPageNumber as React.Dispatch<React.SetStateAction<number>>}
-         />}
-         {errorHttp && <div className="error">
-            <p>Error: {errorHttp}</p>
-            <button className="error-back-btn" onClick={() => setErrorHttp(null)}>back</button>
-           </div>}
-         {dataApi && dataApi.status === 'error' && <div className="error">Error: {dataApi.message}</div>}
+          setArticlesOnPageNumber={
+            setArticlesOnPageNumber as React.Dispatch<
+              React.SetStateAction<number>
+            >
+          }
+        />
+      )}
+      {errorHttp && (
+        <div className="error">
+          <p>Error: {errorHttp}</p>
+          <button
+            className="error-back-btn"
+            onClick={() => setErrorHttp(null)}
+            type="button"
+          >
+            back
+          </button>
+        </div>
+      )}
+      {dataApi && dataApi.status === 'error' && (
+        <div className="error">Error: {dataApi.message}</div>
+      )}
     </div>
   );
- };
+};
 
 export default NewsPage;

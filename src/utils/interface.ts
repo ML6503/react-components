@@ -1,70 +1,72 @@
+import React from 'react';
+
 export interface InputProps {
-    inputValue: string;
-    setInputValue: React.Dispatch<React.SetStateAction<string>>;
-};
+  inputValue: string;
+  setInputValue: React.Dispatch<React.SetStateAction<string>>;
+}
 
 export interface InputDateProps {
-    inputDateValue: string;
-    setInputDateValue: React.Dispatch<React.SetStateAction<string>>;
-};
+  inputDateValue: string;
+  setInputDateValue: React.Dispatch<React.SetStateAction<string>>;
+}
 
 export interface SearchProps {
-    setDataApi: React.Dispatch<React.SetStateAction<string>>;
-    currentPage: number;
-    articlesOnPageNumber: number;
-    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-    setErrorHttp: React.Dispatch<React.SetStateAction<string>>;
-};
+  setDataApi: React.Dispatch<React.SetStateAction<string>>;
+  currentPage: number;
+  articlesOnPageNumber: number;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setErrorHttp: React.Dispatch<React.SetStateAction<string>>;
+}
 
 export interface PublishingSource {
-    id: null | number;
-    name: string;
-};
+  id: null | number;
+  name: string;
+}
 
 export interface Article {
-    author: string;
-    content: string;
-    description: string;
-    publishedAt: string;
-    source: PublishingSource;
-    title: string;
-    url: string;
-    urlToImage?: string;
-};
+  author: string;
+  content: string;
+  description: string;
+  publishedAt: string;
+  source: PublishingSource;
+  title: string;
+  url: string;
+  urlToImage?: string;
+}
 
 export interface DataApi {
-    status: string;
-    articles?: Array<Article>;
-    totalResults?: number;  
-    code?: string;
-    message?: string;    
-};
+  status: string;
+  articles?: Array<Article>;
+  totalResults?: number;
+  code?: string;
+  message?: string;
+}
 
 export interface ArticlesProps {
-    dataApi: DataApi;
-    currentPage: number;
-    setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
-    articlesOnPageNumber: number;
-    setArticlesOnPageNumber: React.Dispatch<React.SetStateAction<number>>;
-};
+  dataApi: DataApi;
+  currentPage: number;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  articlesOnPageNumber: number;
+  setArticlesOnPageNumber: React.Dispatch<React.SetStateAction<number>>;
+}
 
 export interface ArticleProps {
-   article: Article;   
-};
+  article: Article;
+}
 
 export interface PaginationsProps {
-    currentPage: number;
-    setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
-    linksArr: Array<number>;
-    pageLinksNumber: () => number;
-    inputValue: number;
-    setInputValue: React.Dispatch<React.SetStateAction<number>>;
-};
+  currentPage: number;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  linksArr: Array<number>;
+  pageLinksNumber: () => number;
+  inputValue: number;
+  setInputValue: React.Dispatch<React.SetStateAction<number>>;
+}
 
 export interface SortBySelectProps {
-    key: string;
-    id: string;
-    sortValue: string;
-    setSortValue: React.Dispatch<React.SetStateAction<string>>;
-    selectOptions: Array<string>;
-};
+  key: string;
+  id: string;
+  sortValue: string;
+  setSortValue: React.Dispatch<React.SetStateAction<string>>;
+  selectOptions: Array<string>;
+}

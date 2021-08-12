@@ -9,7 +9,7 @@ declare module '*.svg';
 declare module '*.webp';
 
 declare namespace Intl {
-    public function DisplayNames ([string], {type: string}): void {
-      return string;
-    }
+  function DisplayNames([string], { type: string }): void {
+    return string;
   }
+}
