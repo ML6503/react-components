@@ -1,13 +1,7 @@
-import React from "react";
-import "./app.css";
-import Search from './search';
+import React from 'react';
+import './app.css';
+import NewsPage from './components/newsPage';
 
-const App = () => {
-  
-    return(
-      <Search />
-    );
-  };
-
+const App = (): JSX.Element => <NewsPage />;
 
 export default App;
