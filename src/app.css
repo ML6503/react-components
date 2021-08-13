@@ -78,6 +78,41 @@ p, h3 {
     color: #ffffff;
   }
 
+.navigation-wrapper {
+    padding: 1rem; 
+}
+
+.navigation {
+  padding-bottom: 0.5rem; 
+  max-width: 10rem;
+  margin: 0  0  0 auto;
+  border-bottom: 0.05rem solid #f2f2f2; 
+}
+
+.navigation a {
+    margin-left: 0.8rem;
+    text-decoration: none;
+    padding: 0.3rem;
+  }
+  
+  .navigation a:hover {
+    color:#b16002
+  }
+
+  .about-page {
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+    background-color: beige;
+    box-shadow: 0.2rem 0.2rem #1e90ff;
+    border-radius: 0.5rem;
+    padding: 5rem 2rem;
+  }
+
+  .about-header {
+    color:#b16002;
+    text-shadow: #708090;
+  }
 /*end of hide btns logics*/
 /* 
 .logo-wrapper {
