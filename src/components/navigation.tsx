@@ -1,18 +1,33 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 import '../app.css';
+import { NavLinkProps } from "../utils/interface";
 
-const Navigation = (): JSX.Element => (
+const  NavLink = ({ label, to, activeOnlyWhenExact }: NavLinkProps) => {
+  let match = useRouteMatch({
+    path: to,
+    exact: activeOnlyWhenExact
+  });
+
+  return (
+    <li >     
+      <Link className={match ? "active-link" : ""} to={to}>{label}</Link>
+    </li>
+  );
+}
+const Navigation = (): JSX.Element => {
+   
+  return (
     <nav className="navigation-wrapper">
         <ul className="navigation flex-center">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>        
+          <NavLink
+          activeOnlyWhenExact={true}
+          to="/"
+          label="Home" />
+          <NavLink to="/about" label="About"/>
         </ul>
     </nav>
-);
+  );
+};
 
 export default Navigation;

@@ -10,10 +10,10 @@ const App = (): JSX.Element => (
       <div>
           <Navigation />
           <Switch>
-              <Route exact path='/'>
+              <Route exact path="/">
                 <NewsPage />
               </Route>
-              <Route path='/about'>
+              <Route path="/about">
                 <About />
               </Route>
           </Switch>

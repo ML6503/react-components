@@ -70,3 +70,9 @@ export interface SortBySelectProps {
   setSortValue: React.Dispatch<React.SetStateAction<string>>;
   selectOptions: Array<string>;
 }
+
+export interface NavLinkProps {
+  label: string;
+  to: string;
+  activeOnlyWhenExact?: boolean
+}

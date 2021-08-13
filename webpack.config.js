@@ -19,11 +19,13 @@ const config = {
     // filename: '[name].[contenthash].js',
     filename: 'bundle.js',
     assetModuleFilename: 'assets/[hash][ext]',
+    publicPath: '/'
   },
   devtool: 'source-map',
   devServer: {
     open: true,
     host: "localhost",
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({

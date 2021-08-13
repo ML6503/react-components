@@ -1,7 +1,11 @@
+  
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 body {
     font-size: 20px;
     background-color: #a9a9a9;
     /* background-color:#d3d3d3 ; */
+    font-family: "Quicksand", Arial, Helvetica, sans-serif;
 }
 
 p, h3 {
@@ -79,24 +83,33 @@ p, h3 {
   }
 
 .navigation-wrapper {
-    padding: 1rem; 
+    padding: 1rem 5rem; 
 }
 
 .navigation {
   padding-bottom: 0.5rem; 
   max-width: 10rem;
   margin: 0  0  0 auto;
-  border-bottom: 0.05rem solid #f2f2f2; 
+  border-bottom: 0.05rem solid #f2f2f2;
+ 
 }
+
 
 .navigation a {
     margin-left: 0.8rem;
     text-decoration: none;
     padding: 0.3rem;
+    color:  #696969;
+    font-weight: bold;
   }
   
   .navigation a:hover {
     color:#b16002
+  }
+
+  .navigation .active-link {
+    /* color:#b16002; */
+    text-shadow: 0.1rem 0.1rem #cf730a;
   }
 
   .about-page {

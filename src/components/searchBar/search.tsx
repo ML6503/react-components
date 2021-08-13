@@ -62,8 +62,10 @@ const Search: React.FC<SearchProps> = ({
   ]);
 
   useEffect(() => {
+    const abortCont = new AbortController();
+
     if (urlQuery) {
-      fetch(urlQuery)
+      fetch(urlQuery, { signal: abortCont.signal })
         .then((res) => {
           if (!res.ok) {
             throw Error('API news server status: Not reachable');
@@ -80,8 +82,11 @@ const Search: React.FC<SearchProps> = ({
           setErrorHttp(null);
         })
         .catch((err) => {
-          setIsLoading(false);
-          setErrorHttp(err.message);
+          if(err.name !== 'AbortError') {
+            setIsLoading(false);
+            setErrorHttp(err.message);
+          } 
+         
         });
     }
   }, [urlQuery]);
