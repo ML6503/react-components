@@ -82,11 +82,10 @@ const Search: React.FC<SearchProps> = ({
           setErrorHttp(null);
         })
         .catch((err) => {
-          if(err.name !== 'AbortError') {
+          if (err.name !== 'AbortError') {
             setIsLoading(false);
             setErrorHttp(err.message);
-          } 
-         
+          }
         });
     }
   }, [urlQuery]);

@@ -161,6 +161,16 @@ p, h3 {
   transition: opacity 300ms, transform 300ms;
 }
 
+.no-match {
+  text-align: center;
+  background-color: #e5bdaa;
+  box-shadow: 0.2rem 0.2rem #1e90ff;
+  border-radius: 0.8rem;
+  width: 50vw;
+  margin: 5rem auto;
+  padding: 5rem;
+}
+
 /*end of hide btns logics*/
 /* 
 .logo-wrapper {

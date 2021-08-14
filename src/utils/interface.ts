@@ -74,5 +74,5 @@ export interface SortBySelectProps {
 export interface NavLinkProps {
   label: string;
   to: string;
-  activeOnlyWhenExact?: boolean
+  activeOnlyWhenExact?: boolean;
 }

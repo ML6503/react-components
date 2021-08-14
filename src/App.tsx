@@ -1,45 +1,65 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router, 
+  Route,
+  Switch,  
+  withRouter
+} from 'react-router-dom';
 import './app.css';
+import {
+  CSSTransition, 
+  TransitionGroup
+} from 'react-transition-group';
 import NewsPage from './components/newsPage';
 import About from './components/about';
 import Navigation from './components/navigation';
 import NoMatch from './components/noMatch';
-import { CSSTransition } from 'react-transition-group';
 
 
 const routes = [
   { path: '/', name: 'Home', Component: NewsPage },
   { path: '/about', name: 'About', Component: About },
-  // { path: '*', name: 'NoMatch', Component: NoMatch },
-]
+  { path: '*', name: 'NoMatch', Component: NoMatch }
+];
 
-const App = (): JSX.Element => (
+
+const createRoutes = (routes) =>
+  routes.map(({ Component, path }) => {
+    const routRef = React.createRef();
+
+    return (
+      <Route key={path} path={path} exact>
+        {() => (
+          <div
+            ref={routRef as React.RefObject<HTMLDivElement>}
+            className="page" >
+              <Component />
+          </div>
+        )}
+      </Route>
+    );
+  });
+
+const AnimatedSwitch = withRouter(({ location }) => (
+  <TransitionGroup>
+    <CSSTransition
+      key={location.key}
+      timeout={300}
+      classNames="page"
+      unmountOnExit
+    >
+      <Switch location={location}>{createRoutes(routes)}</Switch>
+    </CSSTransition>
+  </TransitionGroup>
+));
+
+const App = () => (
+  // <React.StrictMode>
     <Router>
-      <div>
-          <Navigation />
-          
-          <main className="container">
-          {routes.map(({ path, Component }) => (
-            <Route key={path} exact path={path}>
-              {({ match }) => (
-                <CSSTransition
-                  in={match != null}
-                  timeout={300}
-                  classNames="page"
-                  unmountOnExit
-                >
-                  <div className="container">
-                    <Component />
-                  </div>
-                </CSSTransition>
-              )}
-            </Route>
-          ))}
-      </main>
-      </div>
+      <Navigation />
+      <AnimatedSwitch />
     </Router>
-    
+  // </React.StrictMode>
 );
 
 export default App;
