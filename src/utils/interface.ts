@@ -52,6 +52,7 @@ export interface ArticlesProps {
 
 export interface ArticleProps {
   article: Article;
+  key: string;
 }
 
 export interface PaginationsProps {
@@ -76,3 +77,9 @@ export interface NavLinkProps {
   to: string;
   activeOnlyWhenExact?: boolean;
 }
+
+export interface  RouteInterface  {
+  path: string;
+  name: string;
+  Component: React.FC<{}> | ( () => JSX.Element) }
+

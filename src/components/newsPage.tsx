@@ -7,7 +7,7 @@ import { DataApi } from '../utils/interface';
 const defaultCurrentPage = 1;
 const ARTICLES_ON_PAGE_DEFAULT_NUMBER = 20;
 
-const NewsPage: React.FC = () => {
+const NewsPage: React.FC = (): JSX.Element => {
   const [dataApi, setDataApi] = useState(null);
   const [currentPage, setCurrentPage] = useState(defaultCurrentPage);
   const [articlesOnPageNumber, setArticlesOnPageNumber] = useState(
