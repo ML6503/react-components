@@ -78,20 +78,26 @@ export interface NavLinkProps {
   activeOnlyWhenExact?: boolean;
 }
 
-export interface  RouteInterface  {
+export interface RouteInterface {
   path: string;
   name: string;
-  Component: React.FC<{dataApi?: DataApi, setDataApi?: React.Dispatch<React.SetStateAction<string>> }> | ( () => JSX.Element);
+  Component:
+    | React.FC<{
+        dataApi?: DataApi;
+        setDataApi?: React.Dispatch<React.SetStateAction<string>>;
+      }>
+    | (() => JSX.Element);
   exact: boolean;
 }
 
 export interface StateInterface {
   dataApi: DataApi;
   isLoading: boolean;
-  errorHttp: null | string
+  errorHttp: null | string;
 }
 
-export interface NewsPageProps {
+// export interface NewsPageProps {
+export interface ApiGlobalProps {
   dataApi: DataApi;
   setDataApi: React.Dispatch<React.SetStateAction<string>>;
 }

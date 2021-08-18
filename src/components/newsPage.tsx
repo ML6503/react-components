@@ -2,24 +2,22 @@ import React, { useState } from 'react';
 import '../app.css';
 import Search from './searchBar/search';
 import Articles from './articles/articles';
-import { DataApi, NewsPageProps } from '../utils/interface';
-
-// import { fakeApiData } from '../utils/fakeApiData';
+import { DataApi } from '../utils/interface';
 
 const defaultCurrentPage = 1;
 const ARTICLES_ON_PAGE_DEFAULT_NUMBER = 20;
 
-// const NewsPage: React.FC<NewsPageProps> = ({dataApi, setDataApi} : NewsPageProps): JSX.Element => {
-  const NewsPage = (): JSX.Element => {
+// const NewsPage: React.FC<ApiGlobalProps> = (
+// {dataApi, setDataApi} : ApiGlobalProps): JSX.Element => {
+const NewsPage = (): JSX.Element => {
   const [dataApi, setDataApi] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [errorHttp, setErrorHttp] = useState(null);
-  
+
   const [currentPage, setCurrentPage] = useState(defaultCurrentPage);
   const [articlesOnPageNumber, setArticlesOnPageNumber] = useState(
     ARTICLES_ON_PAGE_DEFAULT_NUMBER
   );
-  
 
   return (
     <div className="search-page">
@@ -34,7 +32,6 @@ const ARTICLES_ON_PAGE_DEFAULT_NUMBER = 20;
       {dataApi && dataApi.status === 'ok' && (
         <Articles
           dataApi={dataApi as DataApi}
-          // dataApi={fakeApiData}
           currentPage={currentPage as number}
           setCurrentPage={
             setCurrentPage as React.Dispatch<React.SetStateAction<number>>

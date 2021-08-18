@@ -5,8 +5,6 @@ import { ArticlesProps } from '../../utils/interface';
 import OneArticle from './oneArticle';
 import Pagination from '../pagination/pagination';
 
-// const pageLinksNumber = 50;
-
 const Articles: React.FC<ArticlesProps> = ({
   dataApi,
   currentPage,
@@ -16,7 +14,6 @@ const Articles: React.FC<ArticlesProps> = ({
 }: ArticlesProps) => {
   const { articles } = dataApi;
   const { totalResults } = dataApi;
-
 
   const pageLinksNumber = () => Math.ceil(totalResults / articlesOnPageNumber);
 
@@ -33,10 +30,10 @@ const Articles: React.FC<ArticlesProps> = ({
         setInputValue={setArticlesOnPageNumber}
       />
       <section className="cards-container flex-center">
-        {articles.map((article, i) => (
+        {articles.map((article) => (
           <OneArticle
             article={article}
-            articles={articles}          
+            articles={articles}
             key={`${article.title}-${article.url}`}
           />
         ))}
