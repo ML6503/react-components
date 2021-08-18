@@ -4,13 +4,17 @@
 body {
     font-size: 20px;
     background-color: #a9a9a9;
-    /* background-color:#d3d3d3 ; */
+    /* background-color: #151516; */
     font-family: "Quicksand", Arial, Helvetica, sans-serif;
 }
 
 p, h3 {
     margin: 0;
     /* padding: 0; */
+}
+
+a {
+  text-decoration: none;
 }
 
 .app {

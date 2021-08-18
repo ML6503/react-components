@@ -17,6 +17,7 @@ const NavLink = ({ label, to, activeOnlyWhenExact }: NavLinkProps) => {
     </li>
   );
 };
+
 const Navigation = (): JSX.Element => (
   <nav className="navigation-wrapper">
     <ul className="navigation flex-center">

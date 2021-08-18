@@ -19,7 +19,7 @@ export interface SearchProps {
 }
 
 export interface PublishingSource {
-  id: null | number;
+  id: string;
   name: string;
 }
 
@@ -52,7 +52,7 @@ export interface ArticlesProps {
 
 export interface ArticleProps {
   article: Article;
-  key: string;
+  articles?: Array<Article>;
 }
 
 export interface PaginationsProps {
@@ -81,5 +81,17 @@ export interface NavLinkProps {
 export interface  RouteInterface  {
   path: string;
   name: string;
-  Component: React.FC<{}> | ( () => JSX.Element) }
+  Component: React.FC<{dataApi?: DataApi, setDataApi?: React.Dispatch<React.SetStateAction<string>> }> | ( () => JSX.Element);
+  exact: boolean;
+}
 
+export interface StateInterface {
+  dataApi: DataApi;
+  isLoading: boolean;
+  errorHttp: null | string
+}
+
+export interface NewsPageProps {
+  dataApi: DataApi;
+  setDataApi: React.Dispatch<React.SetStateAction<string>>;
+}

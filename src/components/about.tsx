@@ -1,7 +1,9 @@
 import React from 'react';
 import '../app.css';
+// import { NewsPageProps } from '../utils/interface';
 
-const About = (): JSX.Element => (
+// const About = ({dataApi, setDataApi} : NewsPageProps): JSX.Element => (
+  const About = (): JSX.Element => (
   <section className="about-page">
     <h2 className="about-header">About API NEWS Search</h2>
     <article>

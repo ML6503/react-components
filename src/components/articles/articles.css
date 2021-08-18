@@ -1,4 +1,9 @@
 
+a {
+    text-decoration: none;
+   
+  }
+
 .cards-container {
     width: 90%;
     height: 90%;   
@@ -12,6 +17,7 @@
     height: auto;
     /* min-height:13.5rem; */
     padding: 1rem;
+  
     /* background-color: #addd;
     box-shadow: 0.2rem 0.2rem #1e90ff;
     border-radius: 0.5rem;     */
@@ -68,4 +74,8 @@
 
 .article {
     width: inherit;
+}
+
+.article-link {
+    color: #151516;
 }

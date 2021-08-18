@@ -17,6 +17,7 @@ const Articles: React.FC<ArticlesProps> = ({
   const { articles } = dataApi;
   const { totalResults } = dataApi;
 
+
   const pageLinksNumber = () => Math.ceil(totalResults / articlesOnPageNumber);
 
   const linksArr: Array<number> = Array.from(Array(pageLinksNumber()).keys());
@@ -32,9 +33,10 @@ const Articles: React.FC<ArticlesProps> = ({
         setInputValue={setArticlesOnPageNumber}
       />
       <section className="cards-container flex-center">
-        {articles.map((article) => (
+        {articles.map((article, i) => (
           <OneArticle
             article={article}
+            articles={articles}          
             key={`${article.title}-${article.url}`}
           />
         ))}
