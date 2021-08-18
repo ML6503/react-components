@@ -46,7 +46,8 @@ module.exports = {
         "tsx": "never"
       }
     ],
-    "max-len": ["warn", { "code": 80 }],
+    "max-len": ["warn", { "code": 80 }], 
+    "max-len": ["error", { "ignorePattern": 'd="([\\s\\S]*?)"' }], 
     "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/label-has-for":"off"
   },

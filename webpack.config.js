@@ -4,7 +4,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
-const ESLintPlugin = require('eslint-wepback-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV == "production";
 
@@ -19,11 +19,13 @@ const config = {
     // filename: '[name].[contenthash].js',
     filename: 'bundle.js',
     assetModuleFilename: 'assets/[hash][ext]',
+    // publicPath: '/'
   },
   devtool: 'source-map',
   devServer: {
     open: true,
     host: "localhost",
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
