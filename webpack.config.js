@@ -19,7 +19,7 @@ const config = {
     // filename: '[name].[contenthash].js',
     filename: 'bundle.js',
     assetModuleFilename: 'assets/[hash][ext]',
-    publicPath: '/'
+    // publicPath: '/'
   },
   devtool: 'source-map',
   devServer: {

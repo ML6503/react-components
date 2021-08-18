@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import './app.css';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
@@ -24,7 +24,11 @@ const App = (): JSX.Element => (
       render={({ location }) => (
         <div className="container">
           <TransitionGroup>
-            <CSSTransition timeout={300} classNames="page" key={location.key}>
+            <CSSTransition
+              timeout={300}
+              classNames="page"
+              key={location.pathname}
+            >
               <Switch location={location}>
                 {routes.map(({ path, Component, exact }) => (
                   <Route path={path} exact={exact} key={path}>
