@@ -1,91 +1,61 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Article } from '../../utils/interface';
+import React from 'react';
+import { useLocation} from 'react-router-dom';
+import { useAppSelector} from '../../redux/hooks';
+import { Article, DetailsLocationState } from '../../utils/interface';
+import { useAppDispatch } from '../../redux/hooks';
+import { getNullError,  } from '../../redux/articlesSlice';
 import './details.css';
-import { urlBase, apiKey } from '../../utils/data';
 
-// const Details = ({dataApi, setDataApi} : NewsPageProps)  => {
-const Details = (): JSX.Element => {
-  const articleId = useParams<{ id: string }>();
-  const [error, setError] = useState(null);
-  const [article, setArticle] = useState(null);
 
-  const str = articleId.id.split(' ').reverse()[0];
-  const utcDate = str.substr(str.indexOf('$') + 1);
+const Details = (): JSX.Element => {  
+  const location = useLocation();
+  const { publishedAt, title } = location.state as DetailsLocationState;  
+  const { articles } = useAppSelector((state) => state);
 
-  const getTitle = () => articleId.id.split('$2', 1);
   const getDate = () => {
-    const date = new Date(utcDate).toString().split(' ', 4).join(' ');
+    const date = new Date(publishedAt).toString().split(' ', 4).join(' ');
     return date;
   };
 
-  const searchForArticle = (articles: Array<Article>) => {
-    setArticle(articles.filter((a) => a.publishedAt === utcDate)[0]);
-  };
 
-  const urlQuery = urlBase.concat(
-    `everything?q=${getTitle()}&apiKey=${apiKey}`
-  );
+  const oneArticle = () : Article => 
+    (articles.articles as Array<Article>).filter((a) => a.publishedAt === publishedAt && a.title === title)[0];
 
-  useEffect(() => {
-    const abortCont = new AbortController();
-
-    if (urlQuery) {
-      fetch(urlQuery, { signal: abortCont.signal })
-        .then((res) => {
-          if (!res.ok) {
-            throw Error('API news server status: Not reachable');
-          }
-
-          return res.json();
-        })
-        .then((data) => {
-          if (data.status === 'error') {
-            throw new Error(data.message);
-          }
-          searchForArticle(data.articles);
-
-          setError(null);
-        })
-        .catch((err) => {
-          if (err.name !== 'AbortError') {
-            setError(err.message);
-          }
-        });
-    }
-  }, []);
+  const dispatch = useAppDispatch();
 
   return (
-    article && (
+    oneArticle()  && (
       <section className="article-details">
         <div className="card flex-center">
           <span className="details details-header">
-            <h3>{getTitle()}</h3>
-            {article.author && <p>by: {article.author}</p>}
+            <h3>{title}</h3>
+            {oneArticle().author && <p>by: {oneArticle().author}</p>}
           </span>
           <span className="article-container details-container flex-center">
             <article className="article ">
-              {article.urlToImage && (
+            {oneArticle().urlToImage && (
                 <img
+                  onError={({ target }) => 
+                    (target as HTMLImageElement).src = '../../../public/ashni-Wh9ZC4727e4-unsplash.jpg'}
                   className="img img-details"
-                  src={article.urlToImage}
-                  alt={'Image for article'.concat(article.title)}
+                  src={oneArticle().urlToImage}
+                  alt={'Image for article'.concat(title)}
                 />
               )}
-              <p>{article.description}</p>
-              <a href={article.url} target="_blank" rel="noreferrer">
-                read more at {article.source.name}
+              <p>{oneArticle().description}</p>
+              <a href={oneArticle().url} target="_blank" rel="noreferrer">
+                read more at {oneArticle().source.name}
               </a>
             </article>
           </span>
           <p className="details-date">published on {getDate()}</p>
         </div>
-        {error && (
+        {articles.error && (
           <div className="error">
-            <p>Error: {error}</p>
+            <p>Error: {articles.error}</p>
             <button
-              className="error-back-btn"
-              onClick={() => setError(null)}
+              className="error-back-btn"            
+              onClick={() => dispatch(getNullError())}
               type="button"
             >
               back

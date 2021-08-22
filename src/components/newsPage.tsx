@@ -3,17 +3,16 @@ import '../app.css';
 import Search from './searchBar/search';
 import Articles from './articles/articles';
 import { DataApi } from '../utils/interface';
+import { useAppSelector } from '../redux/hooks';
+import Error from './error';
 
 const defaultCurrentPage = 1;
 const ARTICLES_ON_PAGE_DEFAULT_NUMBER = 20;
 
-// const NewsPage: React.FC<ApiGlobalProps> = (
-// {dataApi, setDataApi} : ApiGlobalProps): JSX.Element => {
-const NewsPage = (): JSX.Element => {
-  const [dataApi, setDataApi] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorHttp, setErrorHttp] = useState(null);
 
+const NewsPage = (): JSX.Element => {
+  const { articles } = useAppSelector((state) => state);
+ 
   const [currentPage, setCurrentPage] = useState(defaultCurrentPage);
   const [articlesOnPageNumber, setArticlesOnPageNumber] = useState(
     ARTICLES_ON_PAGE_DEFAULT_NUMBER
@@ -21,17 +20,14 @@ const NewsPage = (): JSX.Element => {
 
   return (
     <div className="search-page">
-      <Search
-        setDataApi={setDataApi}
+      <Search    
         currentPage={currentPage}
         articlesOnPageNumber={articlesOnPageNumber}
-        setIsLoading={setIsLoading}
-        setErrorHttp={setErrorHttp}
-      />
-      {isLoading && <div className="loading-bar" />}
-      {dataApi && dataApi.status === 'ok' && (
+      />   
+      {articles.loading && <div className="loading-bar" />}
+      {articles.dataApi && articles.dataApi.status === 'ok' && (
         <Articles
-          dataApi={dataApi as DataApi}
+          dataApi={articles.dataApi as DataApi}
           currentPage={currentPage as number}
           setCurrentPage={
             setCurrentPage as React.Dispatch<React.SetStateAction<number>>
@@ -44,20 +40,12 @@ const NewsPage = (): JSX.Element => {
           }
         />
       )}
-      {errorHttp && (
-        <div className="error">
-          <p>Error: {errorHttp}</p>
-          <button
-            className="error-back-btn"
-            onClick={() => setErrorHttp(null)}
-            type="button"
-          >
-            back
-          </button>
-        </div>
+
+        {articles.hasErrors && (
+        <Error error={articles.error} />
       )}
-      {dataApi && dataApi.status === 'error' && (
-        <div className="error">Error: {dataApi.message}</div>
+      {articles.dataApi && articles.dataApi.status === 'error' && (
+        <Error error={articles.dataApi.message} />
       )}
     </div>
   );

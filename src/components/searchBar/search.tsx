@@ -12,19 +12,21 @@ import {
   selectOptionsLanguage
 } from '../../utils/data';
 import { SearchProps } from '../../utils/interface';
+import { useAppDispatch } from '../../redux/hooks';
+import { fetchArticles } from '../../redux/articlesSlice';
+
 
 const Search: React.FC<SearchProps> = ({
-  setDataApi,
   currentPage,
-  articlesOnPageNumber,
-  setIsLoading,
-  setErrorHttp
+  articlesOnPageNumber
 }: SearchProps) => {
   const [inputValue, setInputValue] = useState('');
   const [sortByValue, setSortByValue] = useState('');
   const [sortByLang, setSortByLang] = useState('');
   const [inputDateValue, setInputDateValue] = useState('');
   const [urlQuery, setUrlQuery] = useState('');
+
+  const dispatch = useAppDispatch();
 
   const selectInputsArr = [
     {
@@ -62,31 +64,8 @@ const Search: React.FC<SearchProps> = ({
   ]);
 
   useEffect(() => {
-    const abortCont = new AbortController();
-
     if (urlQuery) {
-      fetch(urlQuery, { signal: abortCont.signal })
-        .then((res) => {
-          if (!res.ok) {
-            throw Error('API news server status: Not reachable');
-          }
-
-          return res.json();
-        })
-        .then((data) => {
-          if (data.status === 'error') {
-            throw new Error(data.message);
-          }
-          setDataApi(data);
-          setIsLoading(false);
-          setErrorHttp(null);
-        })
-        .catch((err) => {
-          if (err.name !== 'AbortError') {
-            setIsLoading(false);
-            setErrorHttp(err.message);
-          }
-        });
+      dispatch(fetchArticles(urlQuery));
     }
   }, [urlQuery]);
 
@@ -95,7 +74,6 @@ const Search: React.FC<SearchProps> = ({
 
     if (inputValue.length !== 0) {
       getUrl();
-      setIsLoading(true);
     }
   };
 

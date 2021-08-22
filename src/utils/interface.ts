@@ -11,11 +11,8 @@ export interface InputDateProps {
 }
 
 export interface SearchProps {
-  setDataApi: React.Dispatch<React.SetStateAction<string>>;
   currentPage: number;
   articlesOnPageNumber: number;
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  setErrorHttp: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface PublishingSource {
@@ -100,4 +97,10 @@ export interface StateInterface {
 export interface ApiGlobalProps {
   dataApi: DataApi;
   setDataApi: React.Dispatch<React.SetStateAction<string>>;
+}
+
+
+export interface DetailsLocationState {
+  title: string;
+  publishedAt: string;
 }

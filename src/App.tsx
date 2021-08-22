@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import './app.css';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
@@ -13,8 +13,8 @@ import Details from './components/articleDetails/details';
 const routes: Array<RouteInterface> = [
   { path: '/', name: 'Home', Component: NewsPage, exact: true },
   { path: '/about', name: 'About', Component: About, exact: true },
-  { path: '/details/:id', name: 'Details', Component: Details, exact: false },
-  { path: '*', name: 'NoMatch', Component: NoMatch, exact: false }
+  // { path: '/details/:id', name: 'Details', Component: Details, exact: false },
+  // { path: '*', name: 'NoMatch', Component: NoMatch, exact: false }
 ];
 
 const App = (): JSX.Element => (
@@ -35,6 +35,13 @@ const App = (): JSX.Element => (
                     <Component />
                   </Route>
                 ))}
+                <Redirect from="/article_details/:id" to="/details/:id" /> 
+                  <Route path='/details/:id'  >
+                    <Details />
+                  </Route>
+                  <Route path='*'  >
+                    <NoMatch />
+                  </Route>
               </Switch>
             </CSSTransition>
           </TransitionGroup>

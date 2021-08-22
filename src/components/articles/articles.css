@@ -1,7 +1,6 @@
 
 a {
-    text-decoration: none;
-   
+    text-decoration: none;   
   }
 
 .cards-container {
@@ -14,20 +13,13 @@ a {
 
 .card-container {
     width: 45%;
-    height: auto;
-    /* min-height:13.5rem; */
+    height: auto;  
     padding: 1rem;
-  
-    /* background-color: #addd;
-    box-shadow: 0.2rem 0.2rem #1e90ff;
-    border-radius: 0.5rem;     */
-
 }
 
 .card {
-    /* width: 12rem;
-    height: 15rem; */
     width: 100%;
+    min-width: 31.5rem;
     min-height: 13.5rem;
     padding: 0.6rem 0 0.2rem 0;
     background-color: #addd;
@@ -42,7 +34,6 @@ a {
     font-size: 0.8rem;
     font-style: italic;
     color: #2f4f4f;
-    /* background-color:#d3d3d3 ; */
     border-radius: 0.5rem;
     padding: 0.2rem 0.8rem;
    
@@ -51,12 +42,10 @@ a {
 .img-container {
     width: 12rem;
     height: 12rem;
-    padding-bottom: 0.2rem;
-  
+    padding-bottom: 0.2rem;  
 }
 
 .img {  
-    /* width: 10rem; */
     height: 8rem;
     border-radius: 0.5rem;
     float: left;
@@ -68,8 +57,7 @@ a {
     height: fit-content;    
     align-items: center;
     justify-content: center;
-    font-size: 0.8rem;   
-    /* font-weight: bold; */    
+    font-size: 0.8rem;     
 }
 
 .article {

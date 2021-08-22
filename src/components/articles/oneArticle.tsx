@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import './articles.css';
 import { ArticleProps } from '../../utils/interface';
 
@@ -7,10 +8,15 @@ const OneArticle: React.FC<ArticleProps> = ({
   article
 }: ArticleProps): JSX.Element => (
   <div className="card-container flex-center">
-    <Link
-      to={`details/${article.title}$${article.publishedAt}`}
-      className="article-link"
-      target="_blank"
+    <Link      
+      to={{
+          pathname: `details/${article.title}$${article.publishedAt}`,
+          state: {
+          title: article.title,
+          publishedAt: article.publishedAt
+        }
+      }}
+      className="article-link"     
     >
       <div className="card flex-center">
         <span className="details">
@@ -22,6 +28,8 @@ const OneArticle: React.FC<ArticleProps> = ({
             {article.urlToImage && (
               <img
                 className="img"
+                onError={({ target }) => 
+                (target as HTMLImageElement).src = '../../../public/ashni-Wh9ZC4727e4-unsplash.jpg'}
                 src={article.urlToImage}
                 alt={'Image for article'.concat(article.title)}
               />
