@@ -8,15 +8,15 @@ const OneArticle: React.FC<ArticleProps> = ({
   article
 }: ArticleProps): JSX.Element => (
   <div className="card-container flex-center">
-    <Link      
+    <Link
       to={{
-          pathname: `details/${article.title}$${article.publishedAt}`,
-          state: {
+        pathname: `details/${article.title}$${article.publishedAt}`,
+        state: {
           title: article.title,
           publishedAt: article.publishedAt
         }
       }}
-      className="article-link"     
+      className="article-link"
     >
       <div className="card flex-center">
         <span className="details">
@@ -28,8 +28,12 @@ const OneArticle: React.FC<ArticleProps> = ({
             {article.urlToImage && (
               <img
                 className="img"
-                onError={({ target }) => 
-                (target as HTMLImageElement).src = '../../../public/ashni-Wh9ZC4727e4-unsplash.jpg'}
+                onError={(event) => {
+                  const e = event;
+                  const errorSrc =
+                    '../../../public/ashni-Wh9ZC4727e4-unsplash.jpg';
+                  (e.target as HTMLImageElement).src = errorSrc;
+                }}
                 src={article.urlToImage}
                 alt={'Image for article'.concat(article.title)}
               />

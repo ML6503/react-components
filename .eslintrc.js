@@ -31,6 +31,7 @@ module.exports = {
     "comma-dangle": 'off',
     "object-curly-newline": "off",
     "implicit-arrow-linebreak": "off",
+    '@typescript-eslint/explicit-function-return-type': 'off',
     "react/jsx-curly-newline": "off",
     "operator-linebreak": "off",
     "function-paren-newline": "off",

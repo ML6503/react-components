@@ -1,19 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit'
-// import errorReducer from './errorSlice';
-// import loadingReducer from './loadingSlice';
+import { configureStore } from '@reduxjs/toolkit';
 import articlesReducer from './articlesSlice';
 
 export const store = configureStore({
   reducer: {
-    articles: articlesReducer,
-    // loading: loadingReducer,
-    // error: errorReducer,
+    articles: articlesReducer
   },
   // devTools: false,
-  devTools: process.env.NODE_ENV !== 'production',
-})
+  devTools: process.env.NODE_ENV !== 'production'
+  // window.__REDUX_DEVTOOLS_EXTENSION__
+  //  && window.__REDUX_DEVTOOLS_EXTENSION__()
+});
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+// Inferred type: {articles: ArticlesState }
 export type AppDispatch = typeof store.dispatch;

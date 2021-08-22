@@ -15,7 +15,6 @@ import { SearchProps } from '../../utils/interface';
 import { useAppDispatch } from '../../redux/hooks';
 import { fetchArticles } from '../../redux/articlesSlice';
 
-
 const Search: React.FC<SearchProps> = ({
   currentPage,
   articlesOnPageNumber

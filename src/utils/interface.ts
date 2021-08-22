@@ -99,8 +99,11 @@ export interface ApiGlobalProps {
   setDataApi: React.Dispatch<React.SetStateAction<string>>;
 }
 
-
 export interface DetailsLocationState {
   title: string;
   publishedAt: string;
+}
+
+export interface ErrorProps {
+  error: string;
 }

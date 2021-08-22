@@ -9,10 +9,9 @@ import Error from './error';
 const defaultCurrentPage = 1;
 const ARTICLES_ON_PAGE_DEFAULT_NUMBER = 20;
 
-
 const NewsPage = (): JSX.Element => {
   const { articles } = useAppSelector((state) => state);
- 
+
   const [currentPage, setCurrentPage] = useState(defaultCurrentPage);
   const [articlesOnPageNumber, setArticlesOnPageNumber] = useState(
     ARTICLES_ON_PAGE_DEFAULT_NUMBER
@@ -20,10 +19,10 @@ const NewsPage = (): JSX.Element => {
 
   return (
     <div className="search-page">
-      <Search    
+      <Search
         currentPage={currentPage}
         articlesOnPageNumber={articlesOnPageNumber}
-      />   
+      />
       {articles.loading && <div className="loading-bar" />}
       {articles.dataApi && articles.dataApi.status === 'ok' && (
         <Articles
@@ -41,9 +40,7 @@ const NewsPage = (): JSX.Element => {
         />
       )}
 
-        {articles.hasErrors && (
-        <Error error={articles.error} />
-      )}
+      {articles.hasErrors && <Error error={articles.error} />}
       {articles.dataApi && articles.dataApi.status === 'error' && (
         <Error error={articles.dataApi.message} />
       )}
