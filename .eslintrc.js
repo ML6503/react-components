@@ -31,6 +31,7 @@ module.exports = {
     "comma-dangle": 'off',
     "object-curly-newline": "off",
     "implicit-arrow-linebreak": "off",
+    '@typescript-eslint/explicit-function-return-type': 'off',
     "react/jsx-curly-newline": "off",
     "operator-linebreak": "off",
     "function-paren-newline": "off",
@@ -46,7 +47,8 @@ module.exports = {
         "tsx": "never"
       }
     ],
-    "max-len": ["warn", { "code": 80 }],
+    "max-len": ["warn", { "code": 80 }], 
+    "max-len": ["error", { "ignorePattern": 'd="([\\s\\S]*?)"' }], 
     "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/label-has-for":"off"
   },
