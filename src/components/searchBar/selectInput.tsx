@@ -16,7 +16,7 @@ const SelectInput: React.FC<SortBySelectProps> = ({
       (e.target as HTMLSelectElement).value === 'newest'
         ? 'publishedAt'
         : (e.target as HTMLSelectElement).value;
-
+   
     setSortValue(newValue);
   };
 
@@ -34,11 +34,12 @@ const SelectInput: React.FC<SortBySelectProps> = ({
         id={id}
         name={id}
         className="select"
-        value={sortValue}
+        value={sortValue === 'publishedAt' ? 'newest' : sortValue}
         onChange={onSelectChange}
+        data-testid={id}
       >
         {(selectOptions as Array<string>).map((c) => (
-          <option value={c} key={c}>
+          <option value={c} key={c} data-testid="select-option">
             {showOption(c)}
           </option>
         ))}

@@ -5,7 +5,7 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom';
-import './app.css';
+// import './app.css';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import NewsPage from './components/newsPage';
@@ -21,11 +21,11 @@ const routes: Array<RouteInterface> = [
 ];
 
 const App = (): JSX.Element => (
-  <Router>
+  <Router >
     <Navigation />
     <Route
       render={({ location }) => (
-        <div className="container">
+        <div className="container" data-testid='app-container'>
           <TransitionGroup>
             <CSSTransition
               timeout={300}

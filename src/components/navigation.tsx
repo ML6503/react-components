@@ -11,7 +11,7 @@ const NavLink = ({ label, to, activeOnlyWhenExact }: NavLinkProps) => {
 
   return (
     <li>
-      <Link className={match ? 'active-link' : ''} to={to}>
+      <Link className={match ? 'active-link' : ''} to={to} data-testid={`location-display-${label}`}>
         {label}
       </Link>
     </li>
@@ -19,7 +19,7 @@ const NavLink = ({ label, to, activeOnlyWhenExact }: NavLinkProps) => {
 };
 
 const Navigation = (): JSX.Element => (
-  <nav className="navigation-wrapper">
+  <nav className="navigation-wrapper" data-testid='navigation-container'>
     <ul className="navigation flex-center">
       <NavLink activeOnlyWhenExact to="/" label="Home" />
       <NavLink to="/about" label="About" />

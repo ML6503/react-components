@@ -29,7 +29,7 @@ const Articles: React.FC<ArticlesProps> = ({
         inputValue={articlesOnPageNumber}
         setInputValue={setArticlesOnPageNumber}
       />
-      <section className="cards-container flex-center">
+      <section className="cards-container flex-center" data-testid="articles-section">
         {articles.map((article) => (
           <OneArticle
             article={article}

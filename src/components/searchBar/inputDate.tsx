@@ -14,6 +14,7 @@ const InputDate: React.FC<InputDateProps> = ({
       id="date"
       name="date"
       className="select"
+      data-testid="date-input"
       value={inputDateValue}
       onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
         setInputDateValue((e.target as HTMLInputElement).value)

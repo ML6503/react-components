@@ -55,7 +55,8 @@ export default articlesSlice.reducer;
 
 export const fetchArticles = (
   urlQuery: string
-): ThunkDispatch<StoreEnhancer, null, Action> => {
+// ): ThunkDispatch<StoreEnhancer, null, Action> => {
+    ): (dispatch: AppDispatch) => Promise<void> => {
   const abortCont = new AbortController();
 
   return async (dispatch: AppDispatch): Promise<void> => {
@@ -65,16 +66,19 @@ export const fetchArticles = (
       const response: Response = await fetch(urlQuery, {
         signal: abortCont.signal
       });
-      if (!response.ok) {
+      if (response && !response.ok) {
         throw Error('API news server status: Not reachable');
       }
       const data = await response.json();
+     
       if (data.status === 'error') {
         throw new Error(data.message);
       }
+      
       dispatch(getArticlesSuccess(data));
     } catch (error) {
       if (error.name !== 'AbortError') {
+       
         dispatch(getArticlesFailure(error));
       }
     }

@@ -15,6 +15,7 @@ const Input: React.FC<InputProps> = ({
       placeholder="Search news"
       name="s"
       className="search-input"
+      data-testid="search-input"
       value={inputValue}
       onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
         setInputValue((e.target as HTMLInputElement).value)

@@ -78,7 +78,7 @@ const Search: React.FC<SearchProps> = ({
 
   return (
     <div className="search-bar flex-center">
-      <form className="flex-center" onSubmit={handleSubmit}>
+      <form className="flex-center" onSubmit={handleSubmit} data-testid="form">
         <Label />
         <Input inputValue={inputValue} setInputValue={setInputValue} />
         <SearchBtn />
