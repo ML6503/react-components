@@ -1,9 +1,7 @@
 import { AppDispatch, store } from '../../src/redux/store';
 
 import {
-    getArticles,
     getArticlesSuccess,
-    getArticlesFailure 
   } from '../../src/redux/articlesSlice';
 import { DataApi } from '../../src/utils/interface';
 
@@ -36,12 +34,11 @@ export const mockDataApi: DataApi = {
 
 export const fetchArticles = jest.fn(() => {
     Promise.resolve(mockDataApi);
-    console.log('we are in mock fetch', mockDataApi);
     // Promise.resolve({
     //     json: () => Promise.resolve(mockDataApi),
     // });
     // console.log('mock Data', mockDataApi);
-    (store.dispatch as AppDispatch)(getArticlesSuccess(mockDataApi));
+    // (store.dispatch as AppDispatch)(getArticlesSuccess(mockDataApi));
     
 });
 

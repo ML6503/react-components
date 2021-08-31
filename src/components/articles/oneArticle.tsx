@@ -17,6 +17,7 @@ const OneArticle: React.FC<ArticleProps> = ({
         }
       }}
       className="article-link"
+      data-testid="article-link"
     >
       <div className="card flex-center">
         <span className="details">
@@ -24,7 +25,7 @@ const OneArticle: React.FC<ArticleProps> = ({
           {article.author && <p>by: {article.author}</p>}
         </span>
         <span className="article-container flex-center">
-          <article className="article ">
+          <article className="article " data-testid="article">
             {article.urlToImage && (
               <img
                 className="img"
@@ -35,7 +36,7 @@ const OneArticle: React.FC<ArticleProps> = ({
                   (e.target as HTMLImageElement).src = errorSrc;
                 }}
                 src={article.urlToImage}
-                alt={'Image for article'.concat(article.title)}
+                alt={'Image for article '.concat(article.title)}
               />
             )}
             <p>{article.description}</p>

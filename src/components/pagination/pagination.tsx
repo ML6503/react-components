@@ -25,7 +25,7 @@ const Pagination: React.FC<PaginationsProps> = ({
 
   return (
     <div className="pagination-container flex-center">
-      <nav className="pagination flex-center">
+      <nav className="pagination flex-center" data-testid="pagination">
         <button
           type="button"
           onClick={() =>
@@ -83,6 +83,7 @@ const Pagination: React.FC<PaginationsProps> = ({
         <input
           type="number"
           id="articlesNumber"
+          data-testid="input-number"
           name="articlesNumber"
           value={inputValue}
           className="articles-number-input"

@@ -1,10 +1,10 @@
 import App from '../src/App';
 import { beforeEach, afterEach } from '@jest/globals';
 import { cleanup } from '@testing-library/react';
-import { render, fireEvent, screen } from './testUtils';
+import { render, fireEvent, screen } from '../__mocks__/testUtils';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
-import { mockDataApi } from './__mocks__/fetchArticles';
+import { mockDataApi } from '../__mocks__/mockDataApi';
 
 
 const fakeFetch = jest.fn();
@@ -47,10 +47,8 @@ describe('Search Component in App', () => {
         const searchBtn = appEl.getByTestId('search-btn');
         const articlesSection = appEl.queryByTestId('articles-section');
         expect(articlesSection).toBeNull();
-        fireEvent.click(searchBtn);      
-        // screen.debug();
-        expect(appEl.getByTestId('loading')).toBeInTheDocument();  
-        // expect(await appEl.findByTestId('articles-section')).toBeInTheDocument();  
+        fireEvent.click(searchBtn);              
+        expect(appEl.getByTestId('loading')).toBeInTheDocument();    
        
     });
 });

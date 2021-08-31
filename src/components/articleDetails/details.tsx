@@ -44,6 +44,7 @@ const Details = (): JSX.Element => {
                   className="img img-details"
                   src={oneArticle().urlToImage}
                   alt={'Image for article'.concat(title)}
+                  data-testid="img-article-details"
                 />
               )}
               <p>{oneArticle().description}</p>

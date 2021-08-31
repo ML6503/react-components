@@ -1,5 +1,5 @@
 // import {render, screen} from '@testing-library/react'
-import { render, screen } from './testUtils';
+import { render, screen } from '../__mocks__/testUtils';
 
 import userEvent from '@testing-library/user-event'
 import { createMemoryHistory } from 'history';
