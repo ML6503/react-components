@@ -7,7 +7,7 @@ import routeData from 'react-router';
 import { createMemoryHistory } from 'history';
 import { render, fireEvent } from '../__mocks__/testUtils';
 import '@testing-library/jest-dom';
-import { mockDataApi } from '../__mocks__/mockDataApi';
+import mockDataApi from '../__mocks__/mockDataApi';
 
 import reducer, { getArticlesSuccess } from '../src/redux/articlesSlice';
 import Articles from '../src/components/articles/articles';

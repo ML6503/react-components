@@ -4,7 +4,7 @@ import { beforeEach, afterEach } from '@jest/globals';
 import { cleanup } from '@testing-library/react';
 import App from '../src/App';
 import { render, fireEvent, screen } from '../__mocks__/testUtils';
-import { mockDataApi } from '../__mocks__/mockDataApi';
+import mockDataApi from '../__mocks__/mockDataApi';
 
 const fakeFetch = jest.fn();
 
