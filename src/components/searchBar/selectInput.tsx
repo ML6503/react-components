@@ -16,7 +16,7 @@ const SelectInput: React.FC<SortBySelectProps> = ({
       (e.target as HTMLSelectElement).value === 'newest'
         ? 'publishedAt'
         : (e.target as HTMLSelectElement).value;
-   
+
     setSortValue(newValue);
   };
 

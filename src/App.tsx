@@ -21,11 +21,11 @@ const routes: Array<RouteInterface> = [
 ];
 
 const App = (): JSX.Element => (
-  <Router >
+  <Router>
     <Navigation />
     <Route
       render={({ location }) => (
-        <div className="container" data-testid='app-container'>
+        <div className="container" data-testid="app-container">
           <TransitionGroup>
             <CSSTransition
               timeout={300}

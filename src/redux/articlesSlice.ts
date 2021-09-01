@@ -1,9 +1,4 @@
-import {
-  Action,
-  createSlice,
-  StoreEnhancer,
-  ThunkDispatch
-} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { DataApi } from '../utils/interface';
 import { AppDispatch } from './store';
 
@@ -55,8 +50,8 @@ export default articlesSlice.reducer;
 
 export const fetchArticles = (
   urlQuery: string
-// ): ThunkDispatch<StoreEnhancer, null, Action> => {
-    ): (dispatch: AppDispatch) => Promise<void> => {
+  // ): ThunkDispatch<StoreEnhancer, null, Action> => {
+): ((dispatch: AppDispatch) => Promise<void>) => {
   const abortCont = new AbortController();
 
   return async (dispatch: AppDispatch): Promise<void> => {
@@ -70,15 +65,14 @@ export const fetchArticles = (
         throw Error('API news server status: Not reachable');
       }
       const data = await response.json();
-     
+
       if (data.status === 'error') {
         throw new Error(data.message);
       }
-      
+
       dispatch(getArticlesSuccess(data));
     } catch (error) {
       if (error.name !== 'AbortError') {
-       
         dispatch(getArticlesFailure(error));
       }
     }

@@ -59,6 +59,19 @@ module.exports = {
   },
   globals: {
     JSX: true,
-  }
+  },
+  
+    overrides: [
+      {
+        "files": [
+          "**/*.test.ts",
+          "**/*.test.tsx"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
+  
 };
 
