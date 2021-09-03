@@ -14,7 +14,11 @@
     "lint": "npx eslint --ext .ts --ext .tsx .",
     "fix": "npx eslint --ext .ts --ext .tsx . --fix",
     "start": "npx webpack serve --open chrome",
-    "prettier-format": "prettier --config .prettierrc src/**/*.tsx --write"
+    "prettier-format": "prettier --config .prettierrc src/**/*.tsx --write",
+    "build:all": "npm run build:client & npm run build:server",
+    "build:client": "webpack --config webpack.client.js",
+    "build:server": "webpack --config webpack.server.js",
+    "start:server": "nodemon dist/server/main.js"
   },
   "repository": {
     "type": "git",
@@ -33,6 +37,7 @@
     "@jest/globals": "^27.1.0",
     "@reduxjs/toolkit": "^1.6.1",
     "@types/history": "^4.7.9",
+    "express": "^4.17.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
@@ -44,6 +49,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "@types/express": "^4.17.13",
     "@types/jest": "^27.0.1",
     "@types/react": "^17.0.15",
     "@types/react-dom": "^17.0.9",
@@ -69,6 +75,8 @@
     "html-webpack-plugin": "^5.3.2",
     "jest": "^27.0.6",
     "mini-css-extract-plugin": "^2.1.0",
+    "nodemon": "^2.0.12",
+    "null-loader": "^4.0.1",
     "prettier": "^2.3.2",
     "style-loader": "^3.2.1",
     "ts-loader": "^9.2.4",
