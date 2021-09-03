@@ -1,12 +1,18 @@
+/* eslint-disable max-len */
 interface TemplateParams {
-    cssPath: string;
-    jsPath: string;
-    content: string;
-    data?: string;
+  cssPath: string;
+  jsPath: string;
+  content: string;
+  data?: string;
 }
-  
-export function renderTemplate({cssPath, jsPath, content = '', data = ''}: TemplateParams) {
-    return `<!DOCTYPE html>
+
+export default function renderTemplate({
+  cssPath,
+  jsPath,
+  content = '',
+  data = ''
+}: TemplateParams): string {
+  return `<!DOCTYPE html>
     <html lang="en">
         <head>
           <meta charset="utf-8">
@@ -21,8 +27,10 @@ export function renderTemplate({cssPath, jsPath, content = '', data = ''}: Templ
           </noscript>
           <div id="root">${content}</div>
         
-          <script type="application/json" id="data">${data.replace(/</g, '&lt;')}</script>
+          <script type="application/json" id="data">
+            ${data.replace(/</g, '&lt;')}
+          </script>
           <script src="/client/${jsPath}"></script>
         </body>
     </html>`;
-  };
+}

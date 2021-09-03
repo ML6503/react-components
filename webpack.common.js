@@ -1,5 +1,6 @@
 const { join } = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 function createConfig({
   target,
@@ -61,6 +62,12 @@ function createConfig({
         IS_SERVER: JSON.stringify(IS_SERVER),
         'typeof window': JSON.stringify(IS_CLIENT ? 'object' : 'undefined')
       }),
+      new HtmlWebpackPlugin({
+        filename: 'index.html',
+        template: './src/index.html',
+        // inject:'./src/renderTemplate.ts'  // here
+        inject: 'body'
+     })
     ],
   };
 }

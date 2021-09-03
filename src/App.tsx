@@ -1,11 +1,12 @@
 import React from 'react';
 import {
-  HashRouter as Router,
+  StaticRouter,
+  // HashRouter as Router,
   Route,
   Switch,
   Redirect
 } from 'react-router-dom';
-// import './app.css';
+
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import NewsPage from './components/newsPage';
@@ -21,7 +22,7 @@ const routes: Array<RouteInterface> = [
 ];
 
 const App = (): JSX.Element => (
-  <Router>
+  <StaticRouter>
     <Navigation />
     <Route
       render={({ location }) => (
@@ -51,6 +52,6 @@ const App = (): JSX.Element => (
         </div>
       )}
     />
-  </Router>
+  </StaticRouter>
 );
 export default App;

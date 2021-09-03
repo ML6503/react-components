@@ -57,7 +57,7 @@ it('should return fetch', (done) => {
 
   globalRef.fetch = jest.fn().mockImplementation(() => mockFetchPromise);
 
-  globalRef.fetch();
+  globalRef.fetch('url');
 
   expect(globalRef.fetch).toReturn();
   done();

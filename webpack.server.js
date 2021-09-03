@@ -1,3 +1,5 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const config = require('./webpack.common').createConfig({
     target: 'server'
 });

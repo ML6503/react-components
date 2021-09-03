@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = require('./webpack.common').createConfig({
   target: 'client'
@@ -35,5 +36,11 @@ module.exports = {
       filename: 'main.css',
       // filename: '[hash:16].css',
     }),
+    // new HtmlWebpackPlugin({
+    //     filename: 'index.html',
+    //     template: './src/index.html',
+    //     inject: 'body'  // here
+    //     // inject:'./src/renderTemplate.ts'
+    //  })
   ],
 };
