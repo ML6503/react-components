@@ -7,3 +7,9 @@ declare module '*.png';
 declare module '*.gif';
 declare module '*.svg';
 declare module '*.webp';
+
+declare namespace Intl {
+  function DisplayNames([string], { type: string }): void {
+    return string;
+  }
+}
